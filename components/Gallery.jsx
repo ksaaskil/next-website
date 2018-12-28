@@ -26,7 +26,7 @@ const Gallery = () => (<section id="gallery-2col" className="pt-75 pb-75 pt-md-1
                     <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
                 </div>
             </div>
-            <div className="col-md">
+            <div className="col-md-6">
                 <div className="gallery-item gallery-style-5 mb-50 dark padding">
                     <a href={Bear} className="image-popup">
                         <img src={Bear} alt="" className="item-img"/>
