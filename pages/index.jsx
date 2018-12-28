@@ -1,7 +1,7 @@
-import Description from '../components/Description'
+import Header from '../components/Header'
 
 export default () => (
   <div>
-      <Description />
+    <Header />
   </div>
 )
