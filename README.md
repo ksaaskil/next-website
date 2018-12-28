@@ -1,4 +1,4 @@
-# Website with Next.js
+# [Website with Next.js](https://ksaaskil.github.io/next-website/)
 
 ## Usage
 
@@ -22,14 +22,23 @@ yarn build-storybook
 ## Build static
 
 ```bash
-next build
-next export
+yarn export
 ```
 
 Test the static deployment:
 
+Install `serve` if not installed:
+```bash
+yarn global add serve
+```
+
 ```bash
 cd out
-[yarn global add serve]
 serve -p 8080
+```
+
+## Deploy to GitHub pages
+Build, export and deploy to `gh-pages` with `NODE_ENV=github-pages`:
+```
+yarn deploy-gh
 ```

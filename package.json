@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "deploy": "git subtree push --prefix out origin gh-pages",
-    "deploy-gh": "next build && NODE_ENV=github-pages next export -o out-gh && git add out-gh && git commit -m \"Deploy GitHub pages content.\" && git subtree push --prefix out-gh origin gh-pages",
+    "deploy-gh": " NODE_ENV=github-pages next build && NODE_ENV=github-pages next export -o out-gh && git add out-gh && git commit -m \"Deploy GitHub pages content.\" && git subtree push --prefix out-gh origin gh-pages",
     "export": "next build && next export",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
