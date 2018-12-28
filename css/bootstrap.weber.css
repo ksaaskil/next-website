@@ -8127,7 +8127,7 @@ a.image-popup:not(.btn) {
 }
 
 .gallery-item.gallery-style-5:hover .item-img {
-    opacity: 0.1;
+    opacity: 1.0;
 }
 
 
