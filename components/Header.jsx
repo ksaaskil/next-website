@@ -18,7 +18,7 @@ const Header = () => (<header id="header-text-2" className="pt-75 pb-75 pt-lg-20
         </div>
     </div>
     <div className="bg-wrap">
-        <div className="bg" style={{backgroundImage: `url(${Background})`, backgroundPosition: "center center", backgroundSize: "cover"}}></div>
+        <div className="bg" style={{backgroundImage: `url(${Background})`, backgroundPosition: "center center", backgroundSize: "cover", opacity: 0.6}}></div>
     </div>
     </header>
 )
