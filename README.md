@@ -45,3 +45,6 @@ If you need to force-push to `gh-pages` branch:
 ```bash
 git push origin `git subtree split --prefix out-gh master`:gh-pages --force
 ```
+
+## Known issues
+Gallery does not work correctly in GitHub pages, it is possibly related to asset prefix in link.
