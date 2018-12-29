@@ -11,7 +11,11 @@ const Footer = () => (<footer id="footer-logo-share" className="pt-50 pb-50 dark
             </div>
             <div className="col-md order-md-1 d-flex align-items-center">
                 {/*<img className="mw-100 mr-30" src="images/gallery/logo-1-light.png" height="60px" alt="logo">*/}
-                <p className="mb-0">© 2019 Kimmo Sääskilahti. <br/>All rights reserved.</p>
+                <p className="mb-0">
+                    © 2019 Kimmo Sääskilahti.<br/>
+                    All rights reserved.<br/>
+                    Created with <a href="https://nextjs.org/"><u>Next.js</u></a>.
+                </p>
             </div>
         </div>
     </div>

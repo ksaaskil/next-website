@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
 
 import { Button, Welcome } from '@storybook/react/demo'
+import Footer from '../components/Footer'
 import Gallery from '../components/Gallery'
 import Header from '../components/Header'
 
@@ -27,3 +28,5 @@ storiesOf('Button', module)
 storiesOf('Gallery', module).add('vanilla', () => <Gallery />)
 
 storiesOf('Header', module).add('vanilla', () => <Header />)
+
+storiesOf('Footer', module).add('vanilla', () => <Footer />)
