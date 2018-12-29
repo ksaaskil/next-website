@@ -9,6 +9,7 @@ module.exports = withImages(withCSS({
           '/': { page: '/' }
         }
       },
-    assetPrefix: isGitHub ? '/next-website/' : ''
+    assetPrefix: isGitHub ? '/next-website/' : '',
+    distDir: isGitHub ? '.next-gh' : '.next',
     }
 ))
