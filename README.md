@@ -27,15 +27,13 @@ yarn export
 
 Test the static deployment:
 
-Install `serve` if not installed:
 ```bash
-yarn global add serve
-```
-
-```bash
+[yarn global add serve]
 cd out
 serve -p 8080
 ```
+
+If it works, copy the contents of `out/` to the `public_html` directory in your server.
 
 ## Deploy to GitHub pages
 Build, export and deploy to `gh-pages` with `NODE_ENV=github-pages`:
