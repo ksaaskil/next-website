@@ -10,8 +10,21 @@ const ViviparousLizard = require('../images/sisilisko-skatta-1.jpg')
 const Toyhtohyyppa = require('../images/toyhtohyyppa.jpg')
 const Crow = require('../images/crow.jpg')
 
+const title = ({body, withUpperSpace=false}) => (
+    <div align="center">
+        {withUpperSpace ?
+            /*<svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 40 20" width="40" class="mb-30 svg-secondary" src="images/gallery/decor/line-h-1.svg" alt="sep"><path d="m0 8h40v4h-40z" fillRule="evenodd"></path></svg>*/
+            <br/>
+            : null
+        }
+        <h3><strong>{body}</strong></h3>
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 40 20" width="40" class="mb-30 svg-secondary" src="images/gallery/decor/line-h-1.svg" alt="sep"><path d="m0 8h40v4h-40z" fillRule="evenodd"></path></svg>
+    </div>
+)
+
 const Gallery = () => (<section id="gallery-2col" className="pt-75 pb-75 pt-md-150 pb-md-150 gallery light spr-edit-el spr-oc-show spr-wout">
     <div className="container">
+        {title({body: "Wildlife"})}
         <div className="row">
             <div className="col-md-6">
                 <div className="gallery-item gallery-style-5 mb-50 dark padding">
@@ -38,6 +51,9 @@ const Gallery = () => (<section id="gallery-2col" className="pt-75 pb-75 pt-md-1
                 </div>
             </div>
         </div>
+    </div>
+    <div className="container">
+        {title({body: "Landscapes", withUpperSpace: true})}
     </div>
     <div className="bg-wrap">
         <div className="bg"></div>
