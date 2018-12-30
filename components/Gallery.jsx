@@ -6,12 +6,17 @@ import '../css/bootstrap.weber.css'
 import '../css/fx.css'
 import '../css/magnific-popup.css'
 import '../css/custom.css'
+import { Th } from 'glamorous';
 // import '../css/index.css'
 
 const Bear = require('../images/bear.jpg')
 const ViviparousLizard = require('../images/sisilisko-skatta-1.jpg')
 const Toyhtohyyppa = require('../images/toyhtohyyppa.jpg')
 const Crow = require('../images/crow.jpg')
+const Cow = require('../images/cow-alps.jpg')
+const ThunderMarjaniemi = require('../images/thunder-marjaniemi.jpg')
+const Korkeasaari = require('../images/korkeasaari.jpg')
+const ThunderCrop = require('../images/thunder-crop.jpg')
 
 const title = ({body, withUpperSpace=false}) => (
     <div align="center">
@@ -22,6 +27,16 @@ const title = ({body, withUpperSpace=false}) => (
         }
         <h3><strong>{body}</strong></h3>
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 40 20" width="40" className="mb-30 svg-secondary" src="images/gallery/decor/line-h-1.svg" alt="sep"><path d="m0 8h40v4h-40z" fillRule="evenodd"></path></svg>
+    </div>
+)
+
+const Image = (image, caption) => (
+    <div className="gallery-item gallery-style-5 mb-50 dark padding">
+        <a href={image} className="image-popup">
+            <img src={image} alt="" className="item-img"/>
+        </a>
+        <div className="item-title"><p><strong>{caption}</strong></p></div>
+        <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
     </div>
 )
 
@@ -89,6 +104,16 @@ export default class extends React.Component {
             </div>
             <div className="container">
                 {title({body: "Landscapes", withUpperSpace: true})}
+                <div className="row">
+                    <div className="col-12 col-md-6">
+                        {Image(Cow, "Mayrhofen, Austria")}
+                        {Image(ThunderMarjaniemi, "Marjaniemi, Helsinki")}
+                    </div>
+                    <div className="col-12 col-md-6">
+                        {Image(Korkeasaari, "Korkeasaari, Helsinki")}
+                        {Image(ThunderCrop, "Marjaniemi, Helsinki")}
+                    </div>
+                </div>
             </div>
             <div className="bg-wrap">
                 <div className="bg"></div>
