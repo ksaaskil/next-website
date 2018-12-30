@@ -14,7 +14,7 @@ const Footer = () => (<footer id="footer-logo-share" className="pt-50 pb-50 dark
                 <p className="mb-0">
                     © 2019 Kimmo Sääskilahti.<br/>
                     All rights reserved.<br/>
-                    Created with <a href="https://nextjs.org/"><u>Next.js</u></a>.
+                    Created with <a href="https://nextjs.org/"><u>Next.js</u></a> and <a href="https://themeforest.net/item/weber-multipurpose-html-template-with-page-builder/21951995"><u>Weber</u></a> (view code in <a href="https://github.com/ksaaskil/next-website"><u>GitHub</u></a>).
                 </p>
             </div>
         </div>
