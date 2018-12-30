@@ -69,36 +69,12 @@ export default class extends React.Component {
                 {title({body: "Wildlife"})}
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        <div className="gallery-item gallery-style-5 mb-50 dark padding">
-                            <a href={ViviparousLizard} className="image-popup">
-                                <img src={ViviparousLizard} alt="" className="item-img"/>
-                            </a>
-                            <div className="item-title"><p><strong>Viviparous Lizard, Skatanniemi, Helsinki</strong></p></div>
-                            <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
-                        </div>
-                        <div className="gallery-item gallery-style-5 mb-50 dark padding">
-                            <a href={Bear} className="image-popup">
-                                <img src={Bear} alt="" className="item-img"/>
-                            </a>
-                            <div className="item-title"><p><strong>Brown bear, Kuusamo</strong></p></div>
-                            <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
-                        </div>
+                        {Image(ViviparousLizard, "Viviparous Lizard, Skatanniemi, Helsinki")}
+                        {Image(Bear, "Brown bear, Kuusamo")}
                     </div>
                     <div className="col-12 col-md-6">
-                        <div className="gallery-item gallery-style-5 mb-50 dark padding">
-                            <a href={Toyhtohyyppa} className="image-popup">
-                                <img src={Toyhtohyyppa} alt="" className="item-img"/>
-                            </a>
-                            <div className="item-title"><p><strong>Northern Lapwing, Viikki, Helsinki</strong></p></div>
-                            <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
-                        </div>
-                        <div className="gallery-item gallery-style-5 mb-50 dark padding">
-                            <a href={Crow} className="image-popup">
-                                <img src={Crow} alt="" className="item-img"/>
-                            </a>
-                            <div className="item-title"><p><strong>Hooded Crow, Arabianranta, Helsinki</strong></p></div>
-                            <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
-                        </div>
+                        {Image(Toyhtohyyppa, "Northern Lapwing, Viikki, Helsinki")}
+                        {Image(Crow, "Hooded Crow, Arabianranta, Helsinki")}
                     </div>
                 </div>
             </div>
