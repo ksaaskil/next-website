@@ -83,7 +83,7 @@ export default class extends React.Component {
                 <div className="row">
                     <div className="col-12 col-md-6">
                         {Image(Cow, "Mayrhofen, Austria")}
-                        {Image(ThunderMarjaniemi, "Marjaniemi, Helsinki")}
+                        {Image(ThunderMarjaniemi, "Tammisalo, Helsinki")}
                     </div>
                     <div className="col-12 col-md-6">
                         {Image(Korkeasaari, "Korkeasaari, Helsinki")}
