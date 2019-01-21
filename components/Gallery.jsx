@@ -30,15 +30,19 @@ const title = ({body, withUpperSpace=false}) => (
     </div>
 )
 
-const Image = (image, caption) => (
+const PUBLIC_ASSETS_PREFIX = "https://s3-eu-west-1.amazonaws.com/kimmo-public-assets/"
+
+const ImageFromPublicAsset = (name, caption) => {
+    const src= `${PUBLIC_ASSETS_PREFIX}${name}`
+    return (
     <div className="gallery-item gallery-style-5 mb-50 dark padding">
-        <a href={image} className="image-popup">
-            <img src={image} alt="" className="item-img"/>
+        <a href={src} className="image-popup">
+            <img src={src} alt="" className="item-img"/>
         </a>
         <div className="item-title"><p><strong>{caption}</strong></p></div>
         <div className="item-icon"><svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 0 16 16" width="16" className="icon svg-default" src="images/gallery/icons/plus.svg" alt=""><path d="m9 7h7v2h-7v7h-2v-7h-7v-2h7v-7h2z" fillRule="evenodd"></path></svg></div>
-    </div>
-)
+    </div>)
+}
 
 export default class extends React.Component {
 
@@ -69,12 +73,11 @@ export default class extends React.Component {
                 {title({body: "Wildlife"})}
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        {Image(ViviparousLizard, "Viviparous Lizard, Skatanniemi, Helsinki")}
-                        {Image(Bear, "Brown bear, Kuusamo")}
+                        {ImageFromPublicAsset("20180821-IMG_9232.jpg", "Brown bear, Kuusamo")}
+                        {ImageFromPublicAsset("IMG_6869-Edit-2.jpg", "Bumblebee, Hauho")}
                     </div>
                     <div className="col-12 col-md-6">
-                        {Image(Toyhtohyyppa, "Northern Lapwing, Viikki, Helsinki")}
-                        {Image(Crow, "Hooded Crow, Arabianranta, Helsinki")}
+                        {ImageFromPublicAsset("IMG_7126-Edit-2.jpg", "Peacock, Hauho")}
                     </div>
                 </div>
             </div>
@@ -82,12 +85,11 @@ export default class extends React.Component {
                 {title({body: "Landscapes", withUpperSpace: true})}
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        {Image(Cow, "Mayrhofen, Austria")}
-                        {Image(ThunderMarjaniemi, "Tammisalo, Helsinki")}
+                        {ImageFromPublicAsset("20180705-IMG_6200-Edit-Edit-Edit.jpg", "Mayrhofen, Austria")}
                     </div>
                     <div className="col-12 col-md-6">
-                        {Image(Korkeasaari, "Korkeasaari, Helsinki")}
-                        {Image(ThunderCrop, "Marjaniemi, Helsinki")}
+                        {ImageFromPublicAsset("20180829-IMG_9945-Edit-Edit.jpg", "Urho Kekkonen National Park, Finland")}
+                        {/*{ImageFromPublicAsset("20190121-IMG_2871.jpg", "Roihuvuori, Helsinki")}*/}
                     </div>
                 </div>
             </div>
