@@ -9,15 +9,6 @@ import '../css/custom.css'
 import { Th } from 'glamorous';
 // import '../css/index.css'
 
-const Bear = require('../images/bear.jpg')
-const ViviparousLizard = require('../images/sisilisko-skatta-1.jpg')
-const Toyhtohyyppa = require('../images/toyhtohyyppa.jpg')
-const Crow = require('../images/crow.jpg')
-const Cow = require('../images/cow-alps.jpg')
-const ThunderMarjaniemi = require('../images/thunder-marjaniemi.jpg')
-const Korkeasaari = require('../images/korkeasaari.jpg')
-const ThunderCrop = require('../images/thunder-crop.jpg')
-
 const title = ({body, withUpperSpace=false}) => (
     <div align="center">
         {withUpperSpace ?
