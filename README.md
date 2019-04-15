@@ -1,52 +1,39 @@
-# [Website with Next.js](https://ksaaskil.github.io/next-website/)
+# [Website with Next.js](https://kimmosaaskilahti.fi)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2813de34-3363-4ca8-8136-e60c0088a8a6/deploy-status)](https://app.netlify.com/sites/jovial-chandrasekhar-6b410b/deploys)
 
 ## Usage
+
+
+### Run development server
 
 ```bash
 yarn
 yarn dev
 ```
 
-## Run Storybook
-
-```bash
-yarn storybook
-```
-
-## Build Static Storybook
-
-```bash
-yarn build-storybook
-```
-
-## Build static
+### Export static files
 
 ```bash
 yarn export
 ```
 
-Test the static deployment:
+### Run Storybook
+
+```bash
+yarn storybook
+```
+
+### Build static Storybook
+
+```bash
+yarn build-storybook
+```
+
+### Test the export
 
 ```bash
 [yarn global add serve]
 cd out
 serve -p 8080
 ```
-
-If it works, copy the contents of `out/` to the `public_html` directory in your server.
-
-## Deploy to GitHub pages
-Build, export and deploy to `gh-pages` with `NODE_ENV=github-pages`:
-```bash
-yarn deploy-gh
-```
-
-If you need to force-push to `gh-pages` branch:
-```bash
-git push origin `git subtree split --prefix out-gh master`:gh-pages --force
-```
-
-## Known issues
-Gallery does not work correctly in GitHub pages, it is possibly related to asset prefix in link.
