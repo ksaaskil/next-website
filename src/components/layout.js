@@ -29,7 +29,7 @@ export default ({ children }) => (
             <ListLink to="/about/">About</ListLink>
           </ul>
         </header>
-        {children}
+        <div className="text-box">{children}</div>
       </div>
     </div>
   </>
