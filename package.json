@@ -1,33 +1,38 @@
 {
-  "name": "with-storybook",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "next-website",
+  "private": true,
+  "description": "My website built in Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "deploy-gh": "rm -rf .next-gh && NODE_ENV=github-pages next build && NODE_ENV=github-pages next export -o out-gh && git add out-gh && git commit -m \"Deploy GitHub pages content.\" && git subtree push --prefix out-gh origin gh-pages",
-    "export": "rm -rf .next && next build && next export -o out",
-    "start": "next start",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "export": "gatsby build && cp -r public out",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
-    "next": "^7.0.2",
-    "next-images": "^1.0.4",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "gatsby": "^2.8.5",
+    "gatsby-plugin-manifest": "^2.1.1",
+    "gatsby-plugin-offline": "^2.1.1",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-sass": "^2.0.11",
+    "gatsby-plugin-typography": "^2.2.13",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-fairy-gates": "^0.16.19"
   },
-  "license": "ISC",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.4.7",
-    "@storybook/addon-links": "^3.4.7",
-    "@storybook/addons": "^3.4.7",
-    "@storybook/react": "^3.4.7",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.4",
-    "babel-runtime": "^6.26.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "webpack": "^4.28.2"
+    "prettier": "^1.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksaaskil/next-website"
   }
 }
