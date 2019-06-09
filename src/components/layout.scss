@@ -1,4 +1,25 @@
+html {
+  background-color: #ecf6fe;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+*/
+
 .text-box {
+  position: relative;
   animation-name: fadeIn;
   animation-duration: 2s;
 }
@@ -15,13 +36,15 @@
 
 @function random-color() {
   $value: "black";
-  @if random(5) == 1 {
+  $rand: random(5);
+  @return unquote("#aaa");
+  @if $rand == 1 {
     $value: "#DAF7A6";
-  } @else if random(5) == 2 {
+  } @else if $rand == 2 {
     $value: "#FFC300";
-  } @else if random(5) == 3 {
+  } @else if $rand == 3 {
     $value: "#FF5733";
-  } @else if random(5) == 4 {
+  } @else if $rand == 4 {
     $value: "#82E0AA";
   } @else {
     $value: "#85C1E9";

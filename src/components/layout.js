@@ -20,16 +20,20 @@ export default ({ children }) => (
       <div id="stars1" />
       <div id="stars2" />
       <div id="stars3" />
-      <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 1rem` }}>
-        <header style={{ marginBottom: `1.5rem` }}>
+      <div style={{ margin: `3rem auto`, maxWidth: 650, padding: `0 2rem` }}>
+        <div style={{ marginBottom: `1.5rem` }}>
           <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
             <h3 style={{ display: `inline` }}>Kimmo Sääskilahti</h3>
           </Link>
-          <ul style={{ listStyle: `none`, float: `right` }}>
-            <ListLink to="/">Home</ListLink>
-            <ListLink to="/about/">About</ListLink>
+          <ul style={{ float: `right` }}>
+            <Link to="/" style={{ textShadow: "none", margin: "15px" }}>
+              Home
+            </Link>
+            <Link to="/about/" style={{ textShadow: "none" }}>
+              About
+            </Link>
           </ul>
-        </header>
+        </div>
         <div className="text-box">{children}</div>
       </div>
     </div>
