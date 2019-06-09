@@ -1,0 +1,28 @@
+.image-box {
+  position: relative;
+  margin: 3.5rem auto;
+  .image {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    figure {
+      margin: auto;
+      text-align: center;
+      img {
+        margin: auto;
+
+        margin-bottom: 0px;
+        height: 100vh;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+  .image-caption {
+    position: absolute;
+    color: #fff;
+    bottom: 10px;
+    left: 10px;
+  }
+}

@@ -7,6 +7,12 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+
+.content {
+  margin: 3rem auto;
+  maxwidth: 650;
+  padding: 0 2rem;
+}
 /*
 body {
   font-family: "Lato", sans-serif;
@@ -130,7 +136,7 @@ $shadows-big: multiple-box-shadow(100);
 
   @keyframes animStar {
     from {
-      transform: translateY(-2000px);
+      transform: translateY(-100vh);
     }
 
     to {
