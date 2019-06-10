@@ -11,13 +11,13 @@ const ListLink = props => (
 const Header = props => (
   <div className={styles.header}>
     <Link to="/" className={styles.headerName}>
-      <h1 className={styles.headerNameH1}>Kimmo Sääskilahti</h1>
+      <h1 className={styles.headerNameH1}>Kimmo Sääskilahti Photography</h1>
     </Link>
-    <ul style={{ float: `right` }}>
-      <ListLink to="/" style={{ textShadow: "none", margin: "15px" }}>
+    <ul className={styles.listLinks}>
+      <ListLink to="/" className={styles.listLink}>
         Home
       </ListLink>
-      <ListLink to="/about/" style={{ textShadow: "none" }}>
+      <ListLink to="/about/" className={styles.listLink}>
         About
       </ListLink>
     </ul>

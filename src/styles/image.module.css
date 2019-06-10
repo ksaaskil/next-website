@@ -1,7 +1,12 @@
 .image-box {
   display: block;
   position: relative;
-  margin: 1.5rem auto;
+  margin: 2.5rem auto;
+}
+
+.image-box:first-child {
+  /* Distance from header */
+  margin: 2.5rem auto;
 }
 
 .image-caption {
