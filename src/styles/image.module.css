@@ -17,24 +17,14 @@
 }
 
 .image {
-  position: relative;
-  display: block;
-  max-height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*overflow: hidden;*/
+}
+
+.image img {
+  flex-shrink: 0;
   max-width: 100vh;
-  width: auto;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-figure {
-  margin: auto;
-  text-align: center;
-}
-
-img {
-  margin: auto;
-  margin-bottom: 0px;
-  display: block;
-  margin: 0 auto;
+  max-height: 95vh;
 }

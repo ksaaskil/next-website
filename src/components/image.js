@@ -8,10 +8,7 @@ const Image = ({ image, caption }) => {
   return (
     <div className={styles.imageBox}>
       <div className={styles.image}>
-        <figure>
-          <img src={`${PUBLIC_ASSETS_PREFIX}${image}`} alt={caption} />
-          {/*figcaption>{caption}</figcaption>*/}
-        </figure>
+        <img src={`${PUBLIC_ASSETS_PREFIX}${image}`} alt={caption} />
       </div>
       {/*<div className="image-caption">{caption}</div>*/}
     </div>

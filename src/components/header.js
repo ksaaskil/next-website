@@ -15,7 +15,7 @@ const Header = props => (
     </Link>
     <ul className={styles.listLinks}>
       <ListLink to="/" className={styles.listLink}>
-        Home
+        Photography
       </ListLink>
       <ListLink to="/about/" className={styles.listLink}>
         About
