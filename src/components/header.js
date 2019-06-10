@@ -13,6 +13,7 @@ const Header = props => (
     <div className={styles.headerName}>
       <h1 className={styles.headerNameH1}>Kimmo Sääskilahti Photography</h1>
     </div>
+    {/*
     <ul className={styles.listLinks}>
       <ListLink to="/" className={styles.listLink}>
         Photography
@@ -21,6 +22,7 @@ const Header = props => (
         About
       </ListLink>
     </ul>
+    */}
   </div>
 )
 
