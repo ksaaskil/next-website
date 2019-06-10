@@ -74,6 +74,7 @@ $shadows-medium: multiple-box-shadow(200);
 $shadows-big: multiple-box-shadow(100);
 
 .parallax {
+  overflow: hidden;
   #stars1 {
     width: 2px;
     height: 2px;
