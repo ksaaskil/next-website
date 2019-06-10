@@ -1,23 +1,7 @@
 import React from "react"
 import "./index.scss"
 import Layout from "../components/layout"
-
-const PUBLIC_ASSETS_PREFIX =
-  "https://s3-eu-west-1.amazonaws.com/kimmo-public-assets/"
-
-const Image = ({ image, caption }) => {
-  return (
-    <div className="image-box">
-      <div className="image">
-        <figure>
-          <img src={`${PUBLIC_ASSETS_PREFIX}${image}`} />
-          {/*figcaption>{caption}</figcaption>*/}
-        </figure>
-      </div>
-      {/*<div className="image-caption">{caption}</div>*/}
-    </div>
-  )
-}
+import Image from "../components/image"
 
 export default () => (
   <Layout>
