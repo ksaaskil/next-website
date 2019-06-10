@@ -9,8 +9,14 @@ export default ({ children }) => (
     <Helmet>
       <meta charSet="utf-8" />
       <title>Kimmo Sääskilahti's home page</title>
+      {/*
       <link
         href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+        rel="stylesheet"
+      />
+      */}
+      <link
+        href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap"
         rel="stylesheet"
       />
     </Helmet>
