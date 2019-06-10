@@ -1,13 +1,13 @@
 .image-box {
   position: relative;
-  margin: 3.5rem auto;
-  max-height: 95vh;
-  max-width: 95vh;
-  width: auto;
-  height: auto;
+  margin: 1.5rem auto;
   .image {
     position: relative;
     display: block;
+    max-height: 95vh;
+    max-width: 100vh;
+    width: auto;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 
