@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import styles from "../styles/header.module.css"
 
 const ListLink = props => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
@@ -8,9 +9,9 @@ const ListLink = props => (
 )
 
 const Header = props => (
-  <div style={{ marginBottom: `1.5rem` }}>
-    <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-      <h3 style={{ display: `inline` }}>Kimmo Sääskilahti</h3>
+  <div className={styles.header}>
+    <Link to="/" className={styles.headerName}>
+      <h1 className={styles.headerNameH1}>Kimmo Sääskilahti</h1>
     </Link>
     <ul style={{ float: `right` }}>
       <ListLink to="/" style={{ textShadow: "none", margin: "15px" }}>

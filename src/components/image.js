@@ -9,7 +9,7 @@ const Image = ({ image, caption }) => {
     <div className={styles.imageBox}>
       <div className={styles.image}>
         <figure>
-          <img src={`${PUBLIC_ASSETS_PREFIX}${image}`} />
+          <img src={`${PUBLIC_ASSETS_PREFIX}${image}`} alt={caption} />
           {/*figcaption>{caption}</figcaption>*/}
         </figure>
       </div>

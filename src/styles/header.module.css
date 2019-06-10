@@ -1,0 +1,27 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header-name {
+  text-shadow: none;
+  background-image: none;
+  animation: moveInLeft 1s ease-out 0.5s;
+  animation-fill-mode: backwards;
+}
+
+.header-name-h1 {
+  display: inline;
+  font-size: 30px;
+}
