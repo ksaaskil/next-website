@@ -3,16 +3,16 @@ import { Link } from "gatsby"
 import styles from "../styles/header.module.css"
 
 const ListLink = props => (
-  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+  <li>
     <Link to={props.to}>{props.children}</Link>
   </li>
 )
 
 const Header = props => (
   <div className={styles.header}>
-    <Link to="/" className={styles.headerName}>
+    <div className={styles.headerName}>
       <h1 className={styles.headerNameH1}>Kimmo Sääskilahti Photography</h1>
-    </Link>
+    </div>
     <ul className={styles.listLinks}>
       <ListLink to="/" className={styles.listLink}>
         Photography

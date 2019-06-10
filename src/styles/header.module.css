@@ -29,6 +29,7 @@
 .header-name {
   text-shadow: none;
   background-image: none;
+  display: inline;
 }
 
 .header-name-h1 {
@@ -40,6 +41,7 @@
 
 .list-links {
   float: right;
+  display: inline;
   animation: moveInRight 1s ease-out;
   /*animation-fill-mode: backwards;*/
 }
@@ -47,4 +49,13 @@
 .list-link {
   text-shadow: "none";
   margin: "15px";
+}
+
+.list-links li {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.list-link-li a:link,
+.list-link-li a:visited {
 }
