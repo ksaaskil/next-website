@@ -1,4 +1,5 @@
 .image-box {
+  display: block;
   position: relative;
   margin: 1.5rem auto;
 }
