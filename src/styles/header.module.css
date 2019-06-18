@@ -42,11 +42,13 @@
 
 .header-icons a {
   margin: 0 1em;
+  height: 2em;
+  width: 2em;
 }
 
 .header-icons svg {
-  height: 100%;
-  width: 2em;
+  height: auto;
+  width: 100%;
 }
 
 .header-name-h1 {
