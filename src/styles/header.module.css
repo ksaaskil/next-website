@@ -32,6 +32,22 @@
   display: inline;
 }
 
+.header-icons {
+  width: auto;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  /*margin: 0 auto;*/
+  /*background-color: blue;*/
+  display: flex;
+}
+
+.header-icons a svg {
+  height: 100%;
+  width: auto;
+  margin: 20px;
+}
+
 .header-name-h1 {
   font-size: 40px;
   font-weight: 700;
