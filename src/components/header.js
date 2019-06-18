@@ -1,4 +1,5 @@
 import React from "react"
+import { OutboundLink } from "gatsby-plugin-gtag"
 import styles from "../styles/header.module.css"
 import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
@@ -10,15 +11,15 @@ const Header = props => (
       <h1 className={styles.headerNameH1}>Kimmo Sääskilahti Photography</h1>
     </div>
     <div className={styles.headerIcons}>
-      <a href="https://www.instagram.com/saaskimmo/">
+      <OutboundLink href="https://www.instagram.com/saaskimmo/">
         <InstagramIcon />
-      </a>
-      <a href="https://github.com/ksaaskil">
+      </OutboundLink>
+      <OutboundLink href="https://github.com/ksaaskil">
         <GitHubIcon />
-      </a>
-      <a href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en">
+      </OutboundLink>
+      <OutboundLink href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en">
         <ScholarIcon />
-      </a>
+      </OutboundLink>
     </div>
   </div>
 )
