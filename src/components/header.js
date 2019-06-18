@@ -11,13 +11,13 @@ const Header = props => (
     </div>
     <div className={styles.headerIcons}>
       <a href="https://www.instagram.com/saaskimmo/">
-        <InstagramIcon height={"100%"} viewBox={"0 0 132 132"} />
+        <InstagramIcon />
       </a>
       <a href="https://github.com/ksaaskil">
-        <GitHubIcon height={"100%"} viewBox={"0 0 1024 1024"} />
+        <GitHubIcon />
       </a>
       <a href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en">
-        <ScholarIcon height={"100%"} viewBox={"0 0 1755 1755"} />
+        <ScholarIcon />
       </a>
     </div>
   </div>
