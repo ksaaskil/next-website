@@ -4,3 +4,4 @@ out/
 .cache/
 public/
 static/
+src/styles/*.d.ts

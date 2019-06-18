@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-react-helmet",
+    "gatsby-transformer-typescript-css-modules",
     {
       resolve: `gatsby-plugin-gtag`,
       options: {
