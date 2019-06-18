@@ -40,10 +40,13 @@
   display: flex;
 }
 
-.header-icons a svg {
+.header-icons a {
+  margin: 0 1em;
+}
+
+.header-icons svg {
   height: 100%;
-  width: auto;
-  margin: 20px;
+  width: 2em;
 }
 
 .header-name-h1 {

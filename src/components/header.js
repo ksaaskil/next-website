@@ -10,10 +10,10 @@ const Header = props => (
     </div>
     <div className={styles.headerIcons}>
       <a href="https://www.instagram.com/saaskimmo/">
-        <InstagramIcon width={"2em"} viewBox={"0 0 132 132"} />
+        <InstagramIcon height={"100%"} viewBox={"0 0 132 132"} />
       </a>
       <a href="https://github.com/ksaaskil">
-        <GitHubIcon width={"2em"} viewBox="0 0 1024 1024" />
+        <GitHubIcon height={"100%"} viewBox={"0 0 1024 1024"} />
       </a>
     </div>
   </div>
