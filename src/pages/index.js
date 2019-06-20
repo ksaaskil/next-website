@@ -51,6 +51,22 @@ experimentDebugger.enable()
 
 export default () => {
   React.useEffect(() => {
+    let emittedWin = false
+
+    const scrollListener = e => {
+      // @ts-ignore
+      const element = e.target.scrollingElement
+      const isAtBottom =
+        element.scrollHeight - element.scrollTop === element.clientHeight
+      if (isAtBottom && !emittedWin) {
+        emittedWin = true
+        emitter.emitWin(IMAGE_EXPERIMENT)
+      }
+    }
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", scrollListener)
+    }
+
     // Called when the experiment is displayed to the user.
     emitter.addPlayListener(function(experimentName, variantName) {
       console.log(
@@ -63,9 +79,11 @@ export default () => {
       console.log(`Variant ${variantName} of experiment ${experimentName} won`)
     })
 
-    setTimeout(() => {
-      emitter.emitWin(IMAGE_EXPERIMENT)
-    }, 10000)
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", scrollListener)
+      }
+    }
   }, [])
 
   return (
