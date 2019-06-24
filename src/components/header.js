@@ -1,5 +1,5 @@
 import React from "react"
-import { OutboundLink } from "gatsby-plugin-gtag"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 import styles from "../styles/header.module.css"
 import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
