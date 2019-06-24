@@ -32,11 +32,11 @@ const Images2 = () => (
   </>
 )
 
-const IMAGE_EXPERIMENT = "Image experiment"
+const IMAGE_EXPERIMENT_NAME = "Image experiment"
 
 const Index = () => (
   <>
-    <Experiment name={IMAGE_EXPERIMENT}>
+    <Experiment name={IMAGE_EXPERIMENT_NAME}>
       <Variant name="A">
         <Images1 />
       </Variant>
@@ -54,28 +54,25 @@ export default () => {
     let emittedWin = false
 
     const scrollListener = e => {
-      // @ts-ignore
       const element = e.target.scrollingElement
       const isAtBottom =
         element.scrollHeight - element.scrollTop === element.clientHeight
       if (isAtBottom && !emittedWin) {
         emittedWin = true
-        emitter.emitWin(IMAGE_EXPERIMENT)
+        emitter.emitWin(IMAGE_EXPERIMENT_NAME)
       }
     }
     if (typeof window !== "undefined") {
       window.addEventListener("scroll", scrollListener)
     }
 
-    // Called when the experiment is displayed to the user.
-    emitter.addPlayListener(function(experimentName, variantName) {
+    emitter.addPlayListener((experimentName, variantName) => {
       console.log(
         `Displaying experiment ${experimentName} variant ${variantName}`
       )
     })
 
-    // Called when a 'win' is emitted
-    emitter.addWinListener(function(experimentName, variantName) {
+    emitter.addWinListener((experimentName, variantName) => {
       console.log(`Variant ${variantName} of experiment ${experimentName} won`)
     })
 
