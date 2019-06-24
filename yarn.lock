@@ -1266,6 +1266,15 @@
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
+"@marvelapp/react-ab-test@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@marvelapp/react-ab-test/-/react-ab-test-2.2.0.tgz#cf36f6c05869c259353fdf1b2c6eab0bcd00ad68"
+  integrity sha512-lOKZMm2kI9VGJiVde2WgG8WDphONGpp+uSe1i3QVC22IabrnCJ6PMTFtLpvHyMGbOu5sUlBedC1A2Tc3w/6EQA==
+  dependencies:
+    fbemitter "^2.0.2"
+    fbjs "^0.8.0"
+    prop-types "^15.6.0"
+
 "@mikaelkristiansson/domready@^1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mikaelkristiansson/domready/-/domready-1.0.9.tgz#b2b85d8ac7bb2797e577050b61aeaf1b26fbd906"
@@ -5745,12 +5754,19 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
+fbemitter@^2.0.2:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/fbemitter/-/fbemitter-2.1.1.tgz#523e14fdaf5248805bb02f62efc33be703f51865"
+  integrity sha1-Uj4U/a9SSIBbsC9i78M75wP1GGU=
+  dependencies:
+    fbjs "^0.8.4"
+
 fbjs-css-vars@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/fbjs-css-vars/-/fbjs-css-vars-1.0.2.tgz#216551136ae02fe255932c3ec8775f18e2c078b8"
   integrity sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==
 
-fbjs@^0.8.0, fbjs@^0.8.1:
+fbjs@^0.8.0, fbjs@^0.8.1, fbjs@^0.8.4:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
