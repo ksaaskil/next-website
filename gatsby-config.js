@@ -29,9 +29,9 @@ module.exports = {
         // This object is used for configuration specific to this plugin
         pluginConfig: {
           // Puts tracking script in the head instead of the body
-          head: false,
+          head: true,
           // Setting this parameter is also optional
-          respectDNT: true,
+          respectDNT: false,
           // Avoids sending pageview hits from custom paths
           exclude: [],
         },
