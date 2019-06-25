@@ -34,22 +34,84 @@ const Images2 = () => (
 
 const IMAGE_EXPERIMENT_NAME = "Image experiment"
 
-const Index = () => (
-  <>
-    <Experiment name={IMAGE_EXPERIMENT_NAME}>
-      <Variant name="A">
-        <Images1 />
-      </Variant>
-      <Variant name="B">
-        <Images2 />
-      </Variant>
-    </Experiment>
-  </>
-)
+const Index = () => {
+  return (
+    <>
+      <Experiment name={IMAGE_EXPERIMENT_NAME}>
+        <Variant name="A">
+          <Images1 />
+        </Variant>
+        <Variant name="B">
+          <Images2 />
+        </Variant>
+      </Experiment>
+    </>
+  )
+}
 
 experimentDebugger.enable()
 
+const hasWindow = typeof window !== "undefined"
+
+function buildGtag() {
+  function sendEvent({ action, category, label }) {
+    if (hasWindow && window.gtag) {
+      console.log(`Sending gtag event`, { action, category, label })
+      window.gtag("event", action, {
+        event_category: category,
+        event_label: label,
+      })
+    }
+  }
+
+  function emitShow(experimentName, variantName) {
+    sendEvent({
+      action: "show",
+      category: `experiment:${experimentName}`,
+      label: variantName,
+    })
+  }
+
+  function emitWin(experimentName, variantName) {
+    sendEvent({
+      action: "win",
+      category: `experiment:${experimentName}`,
+      label: variantName,
+    })
+  }
+
+  return {
+    emitWin,
+    emitShow,
+  }
+}
+
+const gtag = buildGtag()
+
+function addPlayListener() {
+  emitter.addPlayListener((experimentName, variantName) => {
+    console.log(
+      `Displaying experiment ${experimentName} variant ${variantName}`
+    )
+    if (typeof window !== "undefined" && window.gtag) {
+      gtag.emitShow(experimentName, variantName)
+    }
+  })
+}
+
+function addWinListener() {
+  emitter.addWinListener((experimentName, variantName) => {
+    console.log(`Variant ${variantName} of experiment ${experimentName} won`)
+    if (typeof window !== "undefined" && window.gtag) {
+      gtag.emitWin(experimentName, variantName)
+    }
+  })
+}
+
 export default () => {
+  addPlayListener()
+  addWinListener()
+
   React.useEffect(() => {
     let emittedWin = false
 
@@ -63,18 +125,9 @@ export default () => {
       }
     }
     if (typeof window !== "undefined") {
+      console.log("Adding scroll listener")
       window.addEventListener("scroll", scrollListener)
     }
-
-    emitter.addPlayListener((experimentName, variantName) => {
-      console.log(
-        `Displaying experiment ${experimentName} variant ${variantName}`
-      )
-    })
-
-    emitter.addWinListener((experimentName, variantName) => {
-      console.log(`Variant ${variantName} of experiment ${experimentName} won`)
-    })
 
     return () => {
       if (typeof window !== "undefined") {
