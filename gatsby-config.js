@@ -1,5 +1,15 @@
 module.exports = {
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: `src/assets/github.logo.svg`,
+        name: `Kimmo Sääskilahti's website`,
+        short_name: `Kimmo Sääskilahti`,
+        start_url: `/`,
+        display: `standalone`,
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-react-svg",
