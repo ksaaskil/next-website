@@ -7,7 +7,7 @@ import ScholarIcon from "../assets/scholar.logo.svg"
 const Nav = () => (
   <nav className="nav">
     <div className="nav__items">
-      <OutboundLink href="https://www.instagram.com/saaskimmo/">
+      {/*<OutboundLink href="https://www.instagram.com/saaskimmo/">
         <InstagramIcon />
       </OutboundLink>
       <OutboundLink href="https://github.com/ksaaskil">
@@ -15,7 +15,7 @@ const Nav = () => (
       </OutboundLink>
       <OutboundLink href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en">
         <ScholarIcon />
-      </OutboundLink>
+</OutboundLink>*/}
     </div>
   </nav>
 )
