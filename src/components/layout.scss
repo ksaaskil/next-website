@@ -1,147 +1,21 @@
-html {
-  background-color: #ecf6fe;
-}
-
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
-.content {
-  // margin: 0rem auto;
-  /*max-width: 650;*/
-  // padding: 0 0rem;
+html {
+  font-size: 62.5%; /* 10px of 16px */
 }
 
 body {
   font-family: "Lato", sans-serif;
-  // font-family: "Dancing Script", cursive;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
   color: #777;
   padding: 0rem;
-}
-
-.text-box {
-  position: relative;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@function random-color() {
-  $value: "black";
-  $rand: random(5);
-  @return unquote("#aaa");
-  @if $rand == 1 {
-    $value: "#DAF7A6";
-  } @else if $rand == 2 {
-    $value: "#FFC300";
-  } @else if $rand == 3 {
-    $value: "#FF5733";
-  } @else if $rand == 4 {
-    $value: "#82E0AA";
-  } @else {
-    $value: "#85C1E9";
-  }
-  @return unquote($value);
-}
-
-// n is number of stars required
-@function multiple-box-shadow($n) {
-  $value: "#{random(2000)}px #{random(2000)}px #{random-color()}";
-
-  @for $i from 2 through $n {
-    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #{random-color()}";
-  }
-
-  @return unquote($value);
-}
-
-$shadows-small: multiple-box-shadow(700);
-$shadows-medium: multiple-box-shadow(200);
-$shadows-big: multiple-box-shadow(100);
-
-.parallax {
-  overflow: hidden;
-  #stars1 {
-    width: 2px;
-    height: 2px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: $shadows-small;
-    animation: animStar 150s linear infinite;
-
-    &:after {
-      content: " ";
-      position: absolute;
-      top: 2000px;
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: $shadows-small;
-    }
-  }
-
-  #stars2 {
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: $shadows-medium;
-    animation: animStar 100s linear infinite;
-
-    &:after {
-      content: " ";
-      position: absolute;
-      top: 2000px;
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: $shadows-medium;
-    }
-  }
-
-  #stars3 {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: transparent;
-    box-shadow: $shadows-big;
-    animation: animStar 50s linear infinite;
-
-    &:after {
-      content: " ";
-      position: absolute;
-      top: 2000px;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: transparent;
-      box-shadow: $shadows-big;
-    }
-  }
-
-  @keyframes animStar {
-    from {
-      transform: translateY(-100vh);
-    }
-
-    to {
-      transform: translateY(0px);
-    }
-  }
+  box-sizing: border-box;
 }
