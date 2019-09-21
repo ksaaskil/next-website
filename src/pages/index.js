@@ -2,7 +2,7 @@ import React from "react"
 import "./index.scss"
 import Layout from "../components/layout"
 
-const Index = () => {
+export const Index = () => {
   return (
     <header className="header">
       <div className="header__text-box">
