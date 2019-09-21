@@ -1,16 +1,12 @@
 import React from "react"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
-import styles from "../styles/header.module.css"
 import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 
-const Header = props => (
-  <div className={styles.header}>
-    <div className={styles.headerName}>
-      <h1 className={styles.headerNameH1}>Kimmo Sääskilahti Photography</h1>
-    </div>
-    <div className={styles.headerIcons}>
+const Nav = () => (
+  <nav className="nav">
+    <div className="nav__items">
       <OutboundLink href="https://www.instagram.com/saaskimmo/">
         <InstagramIcon />
       </OutboundLink>
@@ -21,7 +17,7 @@ const Header = props => (
         <ScholarIcon />
       </OutboundLink>
     </div>
-  </div>
+  </nav>
 )
 
-export default Header
+export default Nav
