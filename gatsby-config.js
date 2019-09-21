@@ -31,7 +31,7 @@ module.exports = {
           // Puts tracking script in the head instead of the body
           head: true,
           // Setting this parameter is also optional
-          respectDNT: false,
+          respectDNT: true,
           // Avoids sending pageview hits from custom paths
           exclude: [],
         },
