@@ -987,15 +987,6 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@marvelapp/react-ab-test@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@marvelapp/react-ab-test/-/react-ab-test-2.3.0.tgz#a7185bfb4531c95c4126cc6be85f8d3718aac27a"
-  integrity sha512-xs0+sV8rFWwCo0eS2jq1obLr2+dsWqmyYOmiTxdMGNgPbPnuwN+qFUhN2D9/A/DrW8MyUsChFxAM5JlAn2rk/Q==
-  dependencies:
-    fbemitter "^2.0.2"
-    fbjs "^0.8.0"
-    prop-types "^15.6.0"
-
 "@mikaelkristiansson/domready@^1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mikaelkristiansson/domready/-/domready-1.0.9.tgz#b2b85d8ac7bb2797e577050b61aeaf1b26fbd906"
@@ -5316,19 +5307,12 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbemitter@^2.0.2:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/fbemitter/-/fbemitter-2.1.1.tgz#523e14fdaf5248805bb02f62efc33be703f51865"
-  integrity sha1-Uj4U/a9SSIBbsC9i78M75wP1GGU=
-  dependencies:
-    fbjs "^0.8.4"
-
 fbjs-css-vars@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/fbjs-css-vars/-/fbjs-css-vars-1.0.2.tgz#216551136ae02fe255932c3ec8775f18e2c078b8"
   integrity sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==
 
-fbjs@^0.8.0, fbjs@^0.8.4:
+fbjs@^0.8.0:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5805,7 +5789,7 @@ gatsby-page-utils@^0.0.21:
     micromatch "^3.1.10"
     slash "^3.0.0"
 
-gatsby-plugin-google-gtag@^1.1.0:
+gatsby-plugin-google-gtag@^1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-gtag/-/gatsby-plugin-google-gtag-1.1.9.tgz#bc92637d3a6da8494567337be08f3da69cd30c41"
   integrity sha512-JpAUtkO/JLqxsq0FbcdIrekrSnho8bxl9d8PFLNzoYFCw/T/tazS1Lx/E/fUCdwKB+t0Ujltqo48Zgf8LohCeQ==
