@@ -9,19 +9,19 @@ html {
 }
 
 .content {
-  margin: 3rem auto;
+  // margin: 0rem auto;
   /*max-width: 650;*/
-  padding: 0 2rem;
+  // padding: 0 0rem;
 }
 
 body {
-  /* font-family: "Lato", sans-serif;*/
-  font-family: "Dancing Script", cursive;
+  font-family: "Lato", sans-serif;
+  // font-family: "Dancing Script", cursive;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
   color: #777;
-  // padding: 30px;
+  padding: 0rem;
 }
 
 .text-box {
