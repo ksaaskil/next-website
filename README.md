@@ -2,6 +2,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2813de34-3363-4ca8-8136-e60c0088a8a6/deploy-status)](https://app.netlify.com/sites/jovial-chandrasekhar-6b410b/deploys)
 
+![GitHub Actions Status](https://github.com/ksaaskil/kimmosaaskilahti.fi/workflows/Node%20CI/badge.svg)
+
 ## Usage
 
 ### Run development server
