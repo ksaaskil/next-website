@@ -1,0 +1,23 @@
+.nav {
+  position: absolute;
+}
+
+.nav__items {
+  display: flex;
+  color: #fff;
+  justify-content: flex-start;
+  animation: fadeIn 5s;
+}
+
+.nav__item {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0em 1em;
+  margin: 1em;
+  border-radius: 2em;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+  }
+}

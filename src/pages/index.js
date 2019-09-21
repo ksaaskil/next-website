@@ -6,7 +6,6 @@ import Nav from "../components/nav"
 export const Index = () => {
   return (
     <>
-      <Nav />
       <header className="header">
         <div className="header__text-box">
           <h1 className="heading-primary">
@@ -15,6 +14,7 @@ export const Index = () => {
           </h1>
         </div>
       </header>
+      <Nav />
     </>
   )
 }
