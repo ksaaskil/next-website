@@ -9,9 +9,9 @@ const Nav = () => (
   <nav className="nav">
     <div className="nav__items">
       <div className="nav__item">
-        <a href="https://www.birds.cornell.edu/home/bring-birds-back/">
+        <OutboundLink href="https://www.birds.cornell.edu/home/bring-birds-back/">
           Bring birds back
-        </a>
+        </OutboundLink>
       </div>
       {/*<OutboundLink href="https://www.instagram.com/saaskimmo/">
         <InstagramIcon />
