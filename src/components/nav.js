@@ -4,6 +4,7 @@ import { OutboundLink } from "gatsby-plugin-google-gtag"
 import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
+import DevToIcon from "../assets/devto.logo.svg"
 
 const Nav = () => (
   <nav className="nav">
@@ -25,6 +26,9 @@ const Nav = () => (
         </OutboundLink>
         <OutboundLink href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en">
           <ScholarIcon />
+        </OutboundLink>
+        <OutboundLink href="https://dev.to/ksaaskil">
+          <DevToIcon />
         </OutboundLink>
       </div>
       {/**/}
