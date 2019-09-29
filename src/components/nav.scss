@@ -1,23 +1,52 @@
 .nav {
   position: absolute;
+  width: 100%;
+  z-index: 999;
+  padding: 2rem 0;
 }
 
 .nav__items {
   display: flex;
   color: #fff;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   animation: fadeIn 5s;
 }
 
 .nav__item {
   display: inline-block;
+}
+
+.nav__item--birds {
   background-color: #fff;
   padding: 0em 1em;
-  margin: 1em;
+  margin-left: 1em;
   border-radius: 2em;
   a {
     text-decoration: none;
     text-transform: uppercase;
     color: #000;
   }
+}
+
+.header-icons {
+  width: auto;
+  margin-right: 1em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.logo {
+}
+
+.header-icons a {
+  margin: 0 1em;
+  height: 2em;
+  width: 2em;
+}
+
+.header-icons svg {
+  height: auto;
+  width: 100%;
 }
