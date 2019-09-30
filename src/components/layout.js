@@ -7,6 +7,7 @@ export default ({ children }) => (
   <>
     <Helmet>
       <meta charSet="utf-8" />
+      <meta name="Description" content="Kimmo Sääskilahti's home page."></meta>
       <title>Kimmo Sääskilahti's home page</title>
       <link
         href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap"
