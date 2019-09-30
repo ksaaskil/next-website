@@ -10,6 +10,7 @@ module.exports = {
         display: `standalone`,
       },
     },
+    `gatsby-plugin-remove-serviceworker`,
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-react-svg",
