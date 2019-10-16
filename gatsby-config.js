@@ -3,7 +3,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        icon: `src/assets/github.logo.svg`,
+        icon: `src/assets/bird.png`,
         name: `Kimmo Sääskilahti's website`,
         short_name: `Kimmo Sääskilahti`,
         start_url: `/`,
