@@ -6,12 +6,7 @@ module.exports = {
         icon: `src/assets/icon-512.png`,
         icons: [
           {
-            src: `src/assets/icon-128.png`,
-            sizes: `128x128`,
-            type: `image/png`,
-          },
-          {
-            src: `src/assets/icon-192.png`,
+            src: `/assets/icon-192.png`,
             sizes: `192x192`,
             type: `image/png`,
           },
