@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import PostLink from "../components/post-link"
-import "./blog.scss"
 import { Box } from "@chakra-ui/core"
 import SEO from "../components/seo"
 
@@ -21,7 +20,7 @@ const IndexPage = ({
         pageDescription="Kimmo Sääskilahti's blog"
         pageUrl="https://kimmosaaskilahti.fi/blog"
       />
-      <Box bg="tomato" w="100%" p={4} color="white">
+      <Box bg="black" w="100%" p={4} color="white">
         {Posts}
       </Box>
     </>

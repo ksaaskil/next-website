@@ -5,10 +5,9 @@ import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
-import { Link } from "gatsby"
-import { Link as ChakraUILink } from "@chakra-ui/core"
+import { Link as GatsbyLink } from "gatsby"
+import { Link } from "@chakra-ui/core"
 import { Stack, Icon } from "@chakra-ui/core"
-import NavLink from "./navLink"
 
 const Nav = () => (
   <nav className="nav">
@@ -50,15 +49,35 @@ export function Navigation() {
       py={4}
       mb={6}
     >
-      <Link to="/" aria-label="Home">
-        {/*<Icon name="Logo" color="red.500" h={6} w="auto" />*/}
-        Home
-      </Link>
       <Stack isInline>
-        <NavLink text="Blog" path="/blog/" />
-        <ChakraUILink href="https://www.instagram.com/saaskimmo/" isExternal>
+        <Link as={GatsbyLink} to="/">
+          {/*<Icon name="Logo" color="red.500" h={6} w="auto" />*/}
+          Home
+        </Link>
+        <Link as={GatsbyLink} to="/blog/">
+          Blog
+        </Link>
+      </Stack>
+
+      <Stack isInline>
+        <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
-        </ChakraUILink>
+        </Link>
+        <Link href="https://github.com/ksaaskil/" isExternal>
+          GitHub
+        </Link>
+        <Link href="https://ksaaskil.github.io" isExternal>
+          CV
+        </Link>
+        <Link
+          href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en"
+          isExternal
+        >
+          Google Scholar
+        </Link>
+        <Link href="https://dev.to/ksaaskil" isExternal>
+          dev.to
+        </Link>
       </Stack>
     </Stack>
   )
