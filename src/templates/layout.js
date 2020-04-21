@@ -1,10 +1,7 @@
-import "../styles/global.css"
 import React from "react"
 import "./layout.scss"
-import { Helmet } from "react-helmet"
 import { Navigation } from "../components/nav"
 import { Stack } from "@chakra-ui/core"
-import "./layout.scss"
 
 const Layout = ({ children }) => {
   return (

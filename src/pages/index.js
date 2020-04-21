@@ -5,9 +5,8 @@ export const Index = () => {
   return (
     <>
       <SEO
-        pageTitle="Home"
-        pageDescription="Kimmo Sääskilahti's homepage"
-        pageUrl="https://kimmosaaskilahti.fi/"
+        pageTitle="Kimmo Sääskilahti's homepage"
+        pageDescription="My blog and stuff"
       />
       <header className="header">
         <div className="header__text-box">

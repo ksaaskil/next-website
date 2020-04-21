@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Helmet } from "react-helmet"
 
-function SEO({ children, pageDescription, pageTitle, pageUrl, pageImage }) {
+function SEO({ pageDescription, pageTitle, pageUrl }) {
   const {
     site: {
       siteMetadata: { description: siteDescription, siteUrl, title: siteTitle },
@@ -53,7 +53,6 @@ function SEO({ children, pageDescription, pageTitle, pageUrl, pageImage }) {
         */}
         {/*<meta property="twitter:image" content={pageImage || baseOG} />*/}
       </Helmet>
-      {children}
     </React.Fragment>
   )
 }
