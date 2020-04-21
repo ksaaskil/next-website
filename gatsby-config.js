@@ -64,4 +64,12 @@ module.exports = {
       },
     },
   ],
+  siteMetadata: {
+    title: "Kimmo Sääskilahti",
+    titleTemplate: "%s · The Real Hero",
+    description: "My homepage",
+    siteUrl: "https://kimmosaaskilahti.fi", // No trailing slash allowed!
+    // image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
+    // twitterUsername: "@occlumency",
+  },
 }
