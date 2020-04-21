@@ -1,10 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Box } from "@chakra-ui/core"
+
 const PostLink = ({ post }) => (
-  <div>
-    <Link to={post.frontmatter.path}>
+  <Link to={post.frontmatter.path}>
+    <Box>
       {post.frontmatter.title} ({post.frontmatter.date})
-    </Link>
-  </div>
+    </Box>
+  </Link>
 )
 export default PostLink

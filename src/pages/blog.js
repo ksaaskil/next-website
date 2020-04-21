@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import PostLink from "../components/post-link"
 import "./blog.scss"
-import Layout from "../components/layout"
+import { Box } from "@chakra-ui/core"
 
 const IndexPage = ({
   data: {
@@ -14,9 +14,9 @@ const IndexPage = ({
   ))
 
   return (
-    <Layout titleName="Kimmo Sääskilahti's blog">
-      <div className="blog">{Posts}</div>
-    </Layout>
+    <Box bg="tomato" w="100%" p={4} color="white">
+      {Posts}
+    </Box>
   )
 }
 

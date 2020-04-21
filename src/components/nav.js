@@ -5,6 +5,10 @@ import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
+import { Link } from "gatsby"
+import { Link as ChakraUILink } from "@chakra-ui/core"
+import { Stack, Icon } from "@chakra-ui/core"
+import NavLink from "./navLink"
 
 const Nav = () => (
   <nav className="nav">
@@ -36,4 +40,28 @@ const Nav = () => (
   </nav>
 )
 
-export default Nav
+export function Navigation() {
+  return (
+    <Stack
+      as="nav"
+      isInline
+      justify="space-between"
+      align="center"
+      py={4}
+      mb={6}
+    >
+      <Link to="/" aria-label="Home">
+        {/*<Icon name="Logo" color="red.500" h={6} w="auto" />*/}
+        Home
+      </Link>
+      <Stack isInline>
+        <NavLink text="Blog" path="/blog/" />
+        <ChakraUILink href="https://www.instagram.com/saaskimmo/" isExternal>
+          Instagram
+        </ChakraUILink>
+      </Stack>
+    </Stack>
+  )
+}
+
+export default Navigation
