@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import PostLink from "../components/post-link"
+import "./blog.scss"
+import Layout from "../components/layout"
 
 const IndexPage = ({
   data: {
@@ -11,7 +13,11 @@ const IndexPage = ({
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
-  return <div>{Posts}</div>
+  return (
+    <Layout titleName="Kimmo Sääskilahti's blog">
+      <div className="blog">{Posts}</div>
+    </Layout>
+  )
 }
 
 export default IndexPage
