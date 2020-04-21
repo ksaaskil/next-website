@@ -1,6 +1,6 @@
 ---
 title: How I accidentally learned functional programming
-path: "/blog/my-first-post"
+path: "/blog/2020-05-04-how-i-accidentally-learned-fp"
 date: "2020-05-04"
 description: By writing classes with too many responsibilities
 tags: functional, python
