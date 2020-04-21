@@ -17,6 +17,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.7.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "gatsby": "^2.8.5",
     "gatsby-plugin-google-gtag": "^1.1.9",
     "gatsby-plugin-manifest": "^2.2.18",
