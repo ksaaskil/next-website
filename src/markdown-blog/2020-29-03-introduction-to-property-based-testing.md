@@ -1,7 +1,7 @@
 ---
 title: Introduction to property-based testing
 published: true
-date: 2020-29-03
+date: 2020-03-29
 slug: introduction-to-property-based-testing
 path: /blog/introduction-to-property-based-testing
 description: Verify assumptions about your code
