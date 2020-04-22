@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 
 const PostLink = ({ slug, title, excerpt, post }) => {
   return (
-    <Box>
+    <Box maxW="m" borderWidth="1px" rounded="lg" overflow="hidden">
       <Link to={slug}>
         <Heading>{post.frontmatter.title}</Heading>
       </Link>
