@@ -1,22 +1,33 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { Heading, Box } from "@chakra-ui/core"
+import SEO from "../components/seo"
+
+const PostLink = ({ slug, title, excerpt, post }) => {
+  return (
+    <Box>
+      <Link to={slug}>
+        <Heading>{post.frontmatter.title}</Heading>
+      </Link>
+      <p>{post.excerpt}</p>
+    </Box>
+  )
+}
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allMdx
   return (
-    <div>
-      <h1>Awesome MDX Blog</h1>
-      <ul>
-        {posts.map(({ node: post }) => (
-          <li key={post.id}>
-            <Link to={post.fields.slug}>
-              <h2>{post.frontmatter.title}</h2>
-            </Link>
-            <p>{post.excerpt}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <SEO pageTitle="Kimmo Sääskilahti's blog" />
+      <Box>
+        <Heading>My Blog</Heading>
+        <ul>
+          {posts.map(({ node: post }) => (
+            <PostLink slug={post.fields.slug} post={post} />
+          ))}
+        </ul>
+      </Box>
+    </>
   )
 }
 export const pageQuery = graphql`
