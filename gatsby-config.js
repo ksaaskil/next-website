@@ -1,24 +1,11 @@
 module.exports = {
   plugins: [
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-blog`,
-      },
-    },
-    `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-remark-prismjs`,
-      options: {
-        // Class prefix for <pre> tags containing syntax highlighting;
-        // defaults to 'language-' (e.g. <pre class="language-js">).
-        // If your site loads Prism into the browser at runtime,
-        // (e.g. for use with libraries like react-live),
-        // you may use this to prevent Prism from re-processing syntax.
-        // This is an uncommon use-case though;
-        // If you're unsure, it's best to use the default value.
-        classPrefix: "language-",
+        name: `posts`,
+        path: `${__dirname}/content/posts/`,
       },
     },
     {
