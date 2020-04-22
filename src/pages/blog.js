@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import { Heading, Box } from "@chakra-ui/core"
 import SEO from "../components/seo"
 
-const PostLink = ({ slug, title, excerpt, post }) => {
+const PostLink = ({ slug, post }) => {
   return (
     <Box maxW="m" borderWidth="1px" rounded="lg" overflow="hidden">
       <Link to={slug}>
