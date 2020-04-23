@@ -1,15 +1,28 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { Heading, Box } from "@chakra-ui/core"
+import { Heading, Box, Stack, Text } from "@chakra-ui/core"
 import SEO from "../components/seo"
 
 const PostLink = ({ slug, post }) => {
   return (
-    <Box maxW="m" borderWidth="1px" rounded="lg" overflow="hidden">
+    <Box m={2}>
       <Link to={slug}>
-        <Heading>{post.frontmatter.title}</Heading>
+        <Box
+          p={2}
+          maxW="m"
+          bg="gray.100"
+          color="gray.500"
+          borderWidth={2}
+          rounded={10}
+          overflow="hidden"
+        >
+          <Heading fontSize="lg">{post.frontmatter.title}</Heading>
+          <Text fontWeight={400} mb={2}>
+            {post.frontmatter.date}
+          </Text>
+          <Text fontSize="md">{post.excerpt}</Text>
+        </Box>
       </Link>
-      <p>{post.excerpt}</p>
     </Box>
   )
 }
@@ -19,25 +32,29 @@ const BlogIndex = ({ data }) => {
   return (
     <>
       <SEO pageTitle="Kimmo Sääskilahti's blog" />
-      <Box>
-        <Heading>My Blog</Heading>
-        <ul>
+      <Stack>
+        <Heading textAlign="center">Blog posts</Heading>
+        <Stack>
           {posts.map(({ node: post }) => (
             <PostLink slug={post.fields.slug} post={post} />
           ))}
-        </ul>
-      </Box>
+        </Stack>
+      </Stack>
     </>
   )
 }
 export const pageQuery = graphql`
   query blogIndex {
-    allMdx {
+    allMdx(
+      filter: { frontmatter: { published: { eq: true } } }
+      sort: { order: DESC, fields: frontmatter___date }
+    ) {
       edges {
         node {
           id
           excerpt
           frontmatter {
+            date(formatString: "MMMM Do, YYYY")
             title
           }
           fields {
