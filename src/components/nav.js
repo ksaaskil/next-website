@@ -6,10 +6,10 @@ import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
-import { Link, Button, Switch } from "@chakra-ui/core"
+import { Link, Switch } from "@chakra-ui/core"
 import { Stack, Icon } from "@chakra-ui/core"
 
-const Nav = () => (
+/* const Nav = () => (
   <nav className="nav">
     <div className="nav__items">
       <div className="nav__item">
@@ -34,24 +34,31 @@ const Nav = () => (
           <DevToIcon />
         </OutboundLink>
       </div>
-      {/**/}
     </div>
   </nav>
-)
+) */
 
 export function Navigation({ toggleColorMode }) {
-  const [switched, setSwitch] = React.useState(false)
+  const [isDarkMode, setDarkMode] = React.useState(false)
 
   const handleSwitch = () => {
-    const newState = !switched
-    setSwitch(newState)
+    const newMode = !isDarkMode
+    setDarkMode(newMode)
     toggleColorMode()
   }
 
   return (
-    <Stack as="nav" isInline justify="space-around" py={4} mb={6}>
+    <Stack
+      as="nav"
+      isInline
+      justify="space-around"
+      py={4}
+      mb={6}
+      flexWrap="wrap"
+    >
       <Stack isInline>
-        <Switch value={switched} onChange={() => handleSwitch()} />
+        <Icon name={isDarkMode ? "moon" : "sun"} />
+        <Switch value={isDarkMode} onChange={() => handleSwitch()} />
 
         <Link as={GatsbyLink} to="/">
           Home
@@ -60,8 +67,7 @@ export function Navigation({ toggleColorMode }) {
           Blog
         </Link>
       </Stack>
-
-      <Stack isInline justify="space-evenly" flexWrap="wrap">
+      <Stack isInline overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>
@@ -75,7 +81,7 @@ export function Navigation({ toggleColorMode }) {
           href="https://scholar.google.fi/citations?user=r67e0OEAAAAJ&hl=en"
           isExternal
         >
-          Google Scholar
+          <span>Google Scholar</span>
         </Link>
         <Link href="https://dev.to/ksaaskil" isExternal>
           dev.to
