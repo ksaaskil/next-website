@@ -2,7 +2,7 @@
 title: Covariance and contravariance in generic types
 published: true
 date: 2020-02-10
-description: With Python and corgis
+description: With Python and corgis.
 canonical_url: https://meeshkan.com/blog/covariance-and-contravariance-in-generic-types/
 slug: covariance-and-contravariance-in-generic-types
 path: /blog/covariance-and-contravariance-in-generic-types

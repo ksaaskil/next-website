@@ -21,7 +21,7 @@ const PostLink = ({ slug, post }) => {
           <Text fontWeight={400} mb={2}>
             {post.frontmatter.date}
           </Text>
-          <Text fontSize="md">{post.excerpt}</Text>
+          <Text fontSize="md">{post.frontmatter.description}</Text>
         </Box>
       </Link>
     </Box>
@@ -56,6 +56,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM Do, YYYY")
             title
+            description
           }
           fields {
             slug

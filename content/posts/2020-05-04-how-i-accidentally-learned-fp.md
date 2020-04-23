@@ -4,7 +4,7 @@ path: /blog/2020-05-04-how-i-accidentally-learned-functional-programming
 published: true
 slug: how-i-accidentally-learned-functional-programming
 date: 2020-04-05
-description: By writing classes with too many responsibilities
+description: By writing classes with too many responsibilities.
 tags: functional, python
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Introduction to composable optics with monocle-ts
 published: true
-description: With io-ts, Elvis and Metallica
+description: With io-ts, Elvis and Metallica.
 cover_image: https://dev-to-uploads.s3.amazonaws.com/i/y2qfq36rrsa4avuf9yoa.jpg
 date: 2020-02-16
 path: /blog/introduction-to-composable-optics-with-monocle-ts
