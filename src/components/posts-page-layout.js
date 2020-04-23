@@ -3,11 +3,103 @@ import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
-import { Box } from "@chakra-ui/core"
+import {
+  Box,
+  Callout,
+  Code,
+  Heading,
+  Text,
+  Image,
+  List,
+  Link as ChakraUILink,
+  Divider,
+  ListItem,
+} from "@chakra-ui/core"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 
-const shortcodes = { Link } // Provide common components here
+const components = {
+  h1: props => (
+    <Heading
+      {...props}
+      as="h1"
+      fontSize={["3xl", "4xl", "5xl"]}
+      textAlign="center"
+      mb={12}
+      color="gray.900"
+      fontWeight={900}
+    >
+      {props.children}
+    </Heading>
+  ),
+  h2: props => (
+    <Heading as="h2" fontSize="3xl" fontWeight="900" {...props}></Heading>
+  ),
+  h3: props => <Heading as="h3" fontSize="2xl" fontWeight="800" {...props} />,
+  h4: props => <Heading as="h4" fontSize="lg" fontWeight="700" {...props} />,
+  h5: props => <Heading as="h5" fontSize="md" fontWeight="600" {...props} />,
+  h6: props => <Heading as="h6" fontSize="sm" fontWeight="500" {...props} />,
+  p: props => (
+    <Text as="p" mt={4} lineHeight="tall" {...props}>
+      {props.children}
+    </Text>
+  ),
+  blockquote: props => (
+    <Callout
+      my={6}
+      rounded="sm"
+      variant="left-accent"
+      color="red.600"
+      fontWeight="600"
+      status="error"
+      css={{ "> *:first-of-type": { marginTop: 0 } }}
+      {...props}
+    >
+      {props.children}
+    </Callout>
+  ),
+  inlineCode: props => (
+    <Code variantColor="cyan" fontSize="inherit" {...props} />
+  ),
+  hr: props => <Divider borderColor="gray.100" my={6} {...props} />,
+  a: props => <ChakraUILink color="blue.500" {...props} />,
+  img: props => <Image {...props} rounded="sm" />,
+  pre: props => <Box my="2em" fontSize="inherit" rounded="sm" {...props} />,
+  // code: CodeBlock,
+  ul: props => (
+    <List styleType="disc" my={4} spacing={2} {...props}>
+      {props.children}
+    </List>
+  ),
+  ol: props => (
+    <List as="ol" styleType="decimal" my={4} spacing={2} {...props}>
+      {props.children}
+    </List>
+  ),
+  li: props => <ListItem {...props}>{props.children}</ListItem>,
+  table: props => (
+    <Box as="table" textAlign="left" mt={6} width="full" {...props} />
+  ),
+  // tr:,
+  td: props => (
+    <Box
+      as="td"
+      p={2}
+      borderTopWidth="1px"
+      borderColor="inherit"
+      fontSize="sm"
+      whiteSpace="normal"
+      {...props}
+    />
+  ),
+  th: props => (
+    <Box as="th" p={2} fontWeight="semibold" fontSize="sm" {...props} />
+  ),
+  thematicBreak: props => <Box height={6} {...props} />,
+  // Video,
+}
+
+// const components = { Link } // Provide common components here
 
 export default function PageTemplate({ data: { mdx } }) {
   return (
@@ -17,8 +109,8 @@ export default function PageTemplate({ data: { mdx } }) {
         heading={mdx.frontmatter.title}
         subheading={mdx.frontmatter.date}
       >
-        <Box>
-          <MDXProvider components={shortcodes}>
+        <Box maxWidth="900px" mx="auto" textAlign="justify">
+          <MDXProvider components={components}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
         </Box>
