@@ -11,7 +11,6 @@ export const SingleSection = ({
     {heading ? (
       <Heading
         as="h2"
-        color="gray.900"
         fontSize="3xl"
         fontWeight={900}
         textAlign="center"

@@ -6,7 +6,7 @@ import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
-import { Link } from "@chakra-ui/core"
+import { Link, Button, Switch } from "@chakra-ui/core"
 import { Stack, Icon } from "@chakra-ui/core"
 
 const Nav = () => (
@@ -39,10 +39,20 @@ const Nav = () => (
   </nav>
 )
 
-export function Navigation() {
+export function Navigation({ toggleColorMode }) {
+  const [switched, setSwitch] = React.useState(false)
+
+  const handleSwitch = () => {
+    const newState = !switched
+    setSwitch(newState)
+    toggleColorMode()
+  }
+
   return (
     <Stack as="nav" isInline justify="space-around" py={4} mb={6}>
       <Stack isInline>
+        <Switch value={switched} onChange={() => handleSwitch()} />
+
         <Link as={GatsbyLink} to="/">
           Home
         </Link>
