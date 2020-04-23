@@ -1,7 +1,7 @@
 import React from "react"
 import "./index.scss"
 import SEO from "../components/seo"
-export const Index = () => {
+export default () => {
   return (
     <>
       <SEO
@@ -11,8 +11,4 @@ export const Index = () => {
       Under construction this page is.
     </>
   )
-}
-
-export default () => {
-  return <Index />
 }

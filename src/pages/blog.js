@@ -1,49 +1,51 @@
 import React from "react"
-import { graphql } from "gatsby"
-import PostLink from "../components/post-link"
-import { Box } from "@chakra-ui/core"
+import { Link, graphql } from "gatsby"
+import { Heading, Box } from "@chakra-ui/core"
 import SEO from "../components/seo"
 
-const IndexPage = ({
-  data: {
-    allMarkdownRemark: { edges },
-  },
-}) => {
-  const Posts = edges.map(edge => (
-    <PostLink key={edge.node.id} post={edge.node} />
-  ))
+const PostLink = ({ slug, post }) => {
+  return (
+    <Box maxW="m" borderWidth="1px" rounded="lg" overflow="hidden">
+      <Link to={slug}>
+        <Heading>{post.frontmatter.title}</Heading>
+      </Link>
+      <p>{post.excerpt}</p>
+    </Box>
+  )
+}
 
+const BlogIndex = ({ data }) => {
+  const { edges: posts } = data.allMdx
   return (
     <>
-      <SEO
-        pageTitle="Blog"
-        pageDescription="Kimmo Sääskilahti's blog"
-        pageUrl="https://kimmosaaskilahti.fi/blog"
-      />
-      <Box bg="black" w="100%" p={4} color="white">
-        {Posts}
+      <SEO pageTitle="Kimmo Sääskilahti's blog" />
+      <Box>
+        <Heading>My Blog</Heading>
+        <ul>
+          {posts.map(({ node: post }) => (
+            <PostLink slug={post.fields.slug} post={post} />
+          ))}
+        </ul>
       </Box>
     </>
   )
 }
-
-export default IndexPage
-
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+  query blogIndex {
+    allMdx {
       edges {
         node {
           id
-          excerpt(pruneLength: 250)
+          excerpt
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            path
-            slug
             title
+          }
+          fields {
+            slug
           }
         }
       }
     }
   }
 `
+export default BlogIndex
