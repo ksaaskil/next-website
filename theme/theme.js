@@ -12,8 +12,8 @@ const customTheme = {
     },
   },
   fonts: {
-    body: `Inter, sans-serif`,
-    heading: `Inter, sans-serif`,
+    body: `Lato, sans-serif`,
+    heading: `Lato, sans-serif`,
     mono: "Fira Code, monospace",
   },
   fontSizes: {
