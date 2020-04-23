@@ -11,8 +11,8 @@ const PostLink = ({ slug, post }) => {
         <Box
           p={2}
           maxW="m"
-          bg="gray.100"
-          color="green.500"
+          bg="gray.200"
+          color="gray.700"
           borderWidth={2}
           rounded={10}
           overflow="hidden"

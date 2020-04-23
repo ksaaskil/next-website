@@ -6,7 +6,13 @@ import { Stack } from "@chakra-ui/core"
 const Layout = ({ children }) => {
   return (
     <>
-      <Stack minH="90vh" px={6} spacing={0}>
+      <Stack
+        minH="100vh"
+        px={6}
+        spacing={0}
+        color="gray.700"
+        backgroundColor="gray.50"
+      >
         <Navigation />
         <main>{children}</main>
       </Stack>

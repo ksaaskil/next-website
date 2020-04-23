@@ -44,7 +44,6 @@ export function Navigation() {
     <Stack as="nav" isInline justify="space-around" py={4} mb={6}>
       <Stack isInline>
         <Link as={GatsbyLink} to="/">
-          {/*<Icon name="Logo" color="red.500" h={6} w="auto" />*/}
           Home
         </Link>
         <Link as={GatsbyLink} to="/blog/">
