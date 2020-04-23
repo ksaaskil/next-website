@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { Heading, Box, Stack, Text } from "@chakra-ui/core"
 import SEO from "../components/seo"
+import SingleSection from "../components/single-section"
 
 const PostLink = ({ slug, post }) => {
   return (
@@ -11,7 +12,7 @@ const PostLink = ({ slug, post }) => {
           p={2}
           maxW="m"
           bg="gray.100"
-          color="gray.500"
+          color="green.500"
           borderWidth={2}
           rounded={10}
           overflow="hidden"
@@ -32,13 +33,15 @@ const BlogIndex = ({ data }) => {
   return (
     <>
       <SEO pageTitle="Kimmo Sääskilahti's blog" />
-      <Stack>
-        <Heading textAlign="center">Blog posts</Heading>
+      <SingleSection heading="Blog posts">
         <Stack>
           {posts.map(({ node: post }) => (
             <PostLink slug={post.fields.slug} post={post} />
           ))}
         </Stack>
+      </SingleSection>
+      <Stack>
+        <Heading textAlign="center">Blog posts</Heading>
       </Stack>
     </>
   )

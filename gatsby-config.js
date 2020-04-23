@@ -14,6 +14,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Fira Code\:400,700`,
+          `Inter\:100,200,300,400,500,600,700,800,900`,
+        ],
+        display: "swap",
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         icon: `src/assets/icon-512.png`,

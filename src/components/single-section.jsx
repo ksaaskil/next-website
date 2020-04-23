@@ -1,7 +1,12 @@
 import React from "react"
-import { Box, Heading, Link, Text } from "@chakra-ui/core"
+import { Box, Heading, Text } from "@chakra-ui/core"
 
-export const SingleSection = ({ children, heading, anchor, text, props }) => (
+export const SingleSection = ({
+  children,
+  heading,
+  subheading = null,
+  props,
+}) => (
   <Box as="section" maxW="1000px" mx="auto" py={12} {...props}>
     {heading ? (
       <Heading
@@ -14,21 +19,16 @@ export const SingleSection = ({ children, heading, anchor, text, props }) => (
         letterSpacing="wide"
         lineHeight="short"
       >
-        {anchor ? (
-          <Link id={anchor} _hover={{ textDecoration: "none", cursor: "auto" }}>
-            {heading}
-          </Link>
-        ) : (
-          heading
-        )}
+        {heading}
       </Heading>
     ) : null}
-    {text ? (
+    {subheading ? (
       <Text fontSize="2xl" textAlign="center" mb={12} lineHeight="short">
-        {text}
+        {subheading}
       </Text>
     ) : null}
     {children}
   </Box>
 )
+
 export default SingleSection
