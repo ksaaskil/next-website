@@ -1,5 +1,5 @@
 import React from "react"
-import { Index } from "../pages/index"
+import Index from "../pages/index"
 import { shallow } from "enzyme"
 
 describe("Index component", () => {
