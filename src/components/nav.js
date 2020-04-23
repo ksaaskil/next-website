@@ -41,14 +41,7 @@ const Nav = () => (
 
 export function Navigation() {
   return (
-    <Stack
-      as="nav"
-      isInline
-      justify="space-between"
-      align="center"
-      py={4}
-      mb={6}
-    >
+    <Stack as="nav" isInline justify="space-around" py={4} mb={6}>
       <Stack isInline>
         <Link as={GatsbyLink} to="/">
           {/*<Icon name="Logo" color="red.500" h={6} w="auto" />*/}
@@ -59,7 +52,7 @@ export function Navigation() {
         </Link>
       </Stack>
 
-      <Stack isInline>
+      <Stack isInline justify="space-evenly" flexWrap="wrap">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>

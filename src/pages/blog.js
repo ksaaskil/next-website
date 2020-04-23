@@ -40,9 +40,6 @@ const BlogIndex = ({ data }) => {
           ))}
         </Stack>
       </SingleSection>
-      <Stack>
-        <Heading textAlign="center">Blog posts</Heading>
-      </Stack>
     </>
   )
 }

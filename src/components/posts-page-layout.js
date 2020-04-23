@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
-import { Heading, Box, Text } from "@chakra-ui/core"
+import { Box } from "@chakra-ui/core"
 import SEO from "../components/seo"
+import SingleSection from "../components/single-section"
 
 const shortcodes = { Link } // Provide common components here
 
@@ -12,14 +13,16 @@ export default function PageTemplate({ data: { mdx } }) {
   return (
     <>
       <SEO pageTitle={mdx.frontmatter.title} />
-      <Box>
-        <Heading>{mdx.frontmatter.title}</Heading>
+      <SingleSection
+        heading={mdx.frontmatter.title}
+        subheading={mdx.frontmatter.date}
+      >
         <Box>
           <MDXProvider components={shortcodes}>
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </MDXProvider>
         </Box>
-      </Box>
+      </SingleSection>
     </>
   )
 }
@@ -31,6 +34,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        date(formatString: "MMMM Do, YYYY")
       }
     }
   }
