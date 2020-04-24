@@ -9,6 +9,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `images`,
+        path: `${__dirname}/src/static`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `posts`,
         path: `${__dirname}/content/posts/`,
       },
@@ -23,6 +30,8 @@ module.exports = {
         display: "swap",
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -81,7 +90,6 @@ module.exports = {
   ],
   siteMetadata: {
     title: "Kimmo Sääskilahti",
-    titleTemplate: "%s · The Real Hero",
     description: "My homepage",
     siteUrl: "https://kimmosaaskilahti.fi", // No trailing slash allowed!
     // image: "/images/snape.jpg", // Path to your image you placed in the 'static' folder
