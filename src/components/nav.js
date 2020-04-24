@@ -7,7 +7,7 @@ import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
 import { Link, Switch } from "@chakra-ui/core"
-import { Stack, Icon } from "@chakra-ui/core"
+import { Stack, Icon, useColorMode } from "@chakra-ui/core"
 
 /* const Nav = () => (
   <nav className="nav">
@@ -38,14 +38,8 @@ import { Stack, Icon } from "@chakra-ui/core"
   </nav>
 ) */
 
-export function Navigation({ toggleColorMode }) {
-  const [isDarkMode, setDarkMode] = React.useState(false)
-
-  const handleSwitch = () => {
-    const newMode = !isDarkMode
-    setDarkMode(newMode)
-    toggleColorMode()
-  }
+export function Navigation({}) {
+  const { colorMode, toggleColorMode } = useColorMode()
 
   return (
     <Stack
@@ -57,8 +51,11 @@ export function Navigation({ toggleColorMode }) {
       flexWrap="wrap"
     >
       <Stack isInline>
-        <Icon name={isDarkMode ? "moon" : "sun"} />
-        <Switch value={isDarkMode} onChange={() => handleSwitch()} />
+        <Icon name={colorMode === "dark" ? "moon" : "sun"} />
+        <Switch
+          isChecked={colorMode === "dark"}
+          onChange={() => toggleColorMode()}
+        />
 
         <Link as={GatsbyLink} to="/">
           Home

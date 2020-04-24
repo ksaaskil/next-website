@@ -1,28 +1,55 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import { Heading, Box, Stack, Text } from "@chakra-ui/core"
+import {
+  Heading,
+  Box,
+  PseudoBox,
+  Stack,
+  Text,
+  useColorMode,
+  Flex,
+} from "@chakra-ui/core"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
+import Img from "gatsby-image"
 
-const PostLink = ({ slug, post }) => {
+const PostLink = ({ slug, post, img }) => {
+  const { colorMode } = useColorMode()
+
   return (
     <Box m={2}>
       <Link to={slug}>
-        <Box
-          p={2}
-          maxW="m"
-          bg="gray.200"
-          color="gray.700"
-          borderWidth={2}
-          rounded={10}
+        <PseudoBox
+          backgroundColor={colorMode === "dark" ? "gray.500" : "gray.50"}
+          spacing={8}
+          _hover={{}}
+          _focus={{
+            outline: "none",
+            bg: "white",
+            boxShadow: "outline",
+            borderColor: "gray.300",
+          }}
+          rounded="lg"
           overflow="hidden"
         >
-          <Heading fontSize="lg">{post.frontmatter.title}</Heading>
-          <Text fontWeight={400} mb={2}>
-            {post.frontmatter.date}
-          </Text>
-          <Text fontSize="md">{post.frontmatter.description}</Text>
-        </Box>
+          <Flex
+            alignItems="start"
+            justifyContent="center"
+            p={2}
+            flexWrap="wrap"
+          >
+            <Box flex="1" minWidth="100px">
+              <Img fluid={img} />
+            </Box>
+            <Box flex="2" ml={2}>
+              <Heading fontSize="lg">{post.frontmatter.title}</Heading>
+              <Text fontWeight={400} mb={2}>
+                {post.frontmatter.date}
+              </Text>
+              <Text fontSize="md">{post.frontmatter.description}</Text>
+            </Box>
+          </Flex>
+        </PseudoBox>
       </Link>
     </Box>
   )
@@ -30,13 +57,19 @@ const PostLink = ({ slug, post }) => {
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allMdx
+
   return (
     <>
       <SEO pageTitle="Kimmo Sääskilahti's blog" />
       <SingleSection heading="Blog posts">
         <Stack>
           {posts.map(({ node: post }) => (
-            <PostLink slug={post.fields.slug} post={post} />
+            <PostLink
+              key={post.fields.slug}
+              slug={post.fields.slug}
+              post={post}
+              img={data.reindeer.childImageSharp.fluid}
+            />
           ))}
         </Stack>
       </SingleSection>
@@ -61,6 +94,13 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+        }
+      }
+    }
+    reindeer: file(relativePath: { eq: "reindeer-riisitunturi.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

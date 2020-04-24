@@ -4,7 +4,7 @@ import { Navigation } from "../components/nav"
 import { Stack, useColorMode } from "@chakra-ui/core"
 
 const Layout = ({ children }) => {
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode } = useColorMode()
   return (
     <>
       <Stack
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         color={colorMode === "light" ? "gray.700" : "gray.100"}
         backgroundColor={colorMode === "light" ? "gray.50" : "gray:900"}
       >
-        <Navigation toggleColorMode={toggleColorMode} />
+        <Navigation />
         <main>{children}</main>
       </Stack>
     </>
