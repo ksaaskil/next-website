@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import { Box } from "@chakra-ui/core"
 
 export default () => {
   const data = useStaticQuery(
@@ -29,10 +30,12 @@ export default () => {
         heading="Kimmo Sääskilahti's homepage"
         subheading="Under construction this page is."
       >
-        <Img
-          fluid={data.reindeer.childImageSharp.fluid}
-          alt="Gatsby Docs are awesome"
-        />
+        <Box boxShadow="lg">
+          <Img
+            fluid={data.reindeer.childImageSharp.fluid}
+            alt="Gatsby Docs are awesome"
+          />
+        </Box>
       </SingleSection>
     </>
   )
