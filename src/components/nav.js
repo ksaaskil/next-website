@@ -38,7 +38,7 @@ import { Stack, Icon, useColorMode } from "@chakra-ui/core"
   </nav>
 ) */
 
-export function Navigation({}) {
+export const Navigation = () => {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (

@@ -1,14 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import {
-  Heading,
-  Box,
-  PseudoBox,
-  Stack,
-  Text,
-  useColorMode,
-  Flex,
-} from "@chakra-ui/core"
+import { Box, PseudoBox, Stack, Text, useColorMode } from "@chakra-ui/core"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import Img from "gatsby-image"
@@ -17,39 +9,49 @@ const PostLink = ({ slug, post, img }) => {
   const { colorMode } = useColorMode()
 
   return (
-    <Box m={2}>
+    <PseudoBox m={2}>
       <Link to={slug}>
         <PseudoBox
           backgroundColor={colorMode === "dark" ? "gray.600" : "gray.100"}
-          role="group"
           _hover={{
             bg: colorMode === "dark" ? "gray.500" : "gray.200",
-            boxShadow: "outline",
+            /*boxShadow: "outline",*/
             transform: "translate(-3px, -3px)",
           }}
           rounded="lg"
-          overflow="hidden"
+          p={4}
+          display={{ md: "flex" }}
         >
-          <Flex
-            alignItems="start"
-            justifyContent="center"
-            p={2}
-            flexWrap="wrap"
-          >
-            <Box flex="1" minWidth="100px">
-              <Img fluid={img} />
-            </Box>
-            <PseudoBox flex="2" ml={2} _groupHover={{}}>
-              <Heading fontSize="lg">{post.frontmatter.title}</Heading>
-              <Text fontWeight={400} mb={2}>
-                {post.frontmatter.date}
-              </Text>
-              <Text fontSize="md">{post.frontmatter.description}</Text>
-            </PseudoBox>
-          </Flex>
+          <Box rounded="lg" flexShrink={0} width={{ md: 200 }}>
+            <Img fluid={img} />
+          </Box>
+          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+            <Text
+              fontWeight="bold"
+              textTransform="uppercase"
+              fontSize="sm"
+              letterSpacing="wide"
+              color="teal.600"
+            >
+              {post.frontmatter.title}
+            </Text>
+            <Link
+              mt={1}
+              display="block"
+              fontSize="lg"
+              lineHeight="normal"
+              fontWeight="semibold"
+              href="#"
+            >
+              {post.frontmatter.description}
+            </Link>
+            <Text mt={2} color={colorMode === "dark" ? "gray.200" : "gray.600"}>
+              {post.excerpt}
+            </Text>
+          </Box>
         </PseudoBox>
       </Link>
-    </Box>
+    </PseudoBox>
   )
 }
 
