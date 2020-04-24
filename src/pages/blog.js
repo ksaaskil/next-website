@@ -20,14 +20,12 @@ const PostLink = ({ slug, post, img }) => {
     <Box m={2}>
       <Link to={slug}>
         <PseudoBox
-          backgroundColor={colorMode === "dark" ? "gray.500" : "gray.50"}
-          spacing={8}
-          _hover={{}}
-          _focus={{
-            outline: "none",
-            bg: "white",
+          backgroundColor={colorMode === "dark" ? "gray.600" : "gray.100"}
+          role="group"
+          _hover={{
+            bg: colorMode === "dark" ? "gray.500" : "gray.200",
             boxShadow: "outline",
-            borderColor: "gray.300",
+            transform: "translate(-3px, -3px)",
           }}
           rounded="lg"
           overflow="hidden"
@@ -41,13 +39,13 @@ const PostLink = ({ slug, post, img }) => {
             <Box flex="1" minWidth="100px">
               <Img fluid={img} />
             </Box>
-            <Box flex="2" ml={2}>
+            <PseudoBox flex="2" ml={2} _groupHover={{}}>
               <Heading fontSize="lg">{post.frontmatter.title}</Heading>
               <Text fontWeight={400} mb={2}>
                 {post.frontmatter.date}
               </Text>
               <Text fontSize="md">{post.frontmatter.description}</Text>
-            </Box>
+            </PseudoBox>
           </Flex>
         </PseudoBox>
       </Link>
