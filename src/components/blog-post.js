@@ -14,8 +14,9 @@ import {
   Divider,
   ListItem,
 } from "@chakra-ui/core"
-import SEO from "../components/seo"
-import SingleSection from "../components/single-section"
+import SEO from "./seo"
+import SingleSection from "./single-section"
+import CodeBlock from "./code-block"
 
 const components = {
   h1: props => (
@@ -58,13 +59,13 @@ const components = {
     </Callout>
   ),
   inlineCode: props => (
-    <Code variantColor="cyan" fontSize="inherit" {...props} />
+    <Code variantColor="blue" fontSize="inherit" {...props} />
   ),
   hr: props => <Divider borderColor="gray.100" my={6} {...props} />,
   a: props => <ChakraUILink color="blue.500" {...props} />,
   img: props => <Image {...props} rounded="sm" />,
   pre: props => <Box my="2em" fontSize="inherit" rounded="sm" {...props} />,
-  // code: CodeBlock,
+  code: CodeBlock,
   ul: props => (
     <List styleType="disc" my={4} spacing={2} {...props}>
       {props.children}
