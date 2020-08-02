@@ -5,11 +5,31 @@ import SingleSection from "../components/single-section"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import { Box } from "@chakra-ui/core"
+import BlogIndex from "../components/blog-list"
 
-export default () => {
+export default ({ props }) => {
   const data = useStaticQuery(
     graphql`
-      query {
+      query blogList {
+        allMdx(
+          filter: { frontmatter: { published: { eq: true } } }
+          sort: { order: DESC, fields: frontmatter___date }
+        ) {
+          edges {
+            node {
+              id
+              excerpt
+              frontmatter {
+                date(formatString: "MMMM Do, YYYY")
+                title
+                description
+              }
+              fields {
+                slug
+              }
+            }
+          }
+        }
         reindeer: file(relativePath: { eq: "reindeer-riisitunturi.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
@@ -23,20 +43,10 @@ export default () => {
   return (
     <>
       <SEO
-        pageTitle="Kimmo Sääskilahti's homepage"
+        pageTitle="Kimmo Sääskilahti's blog"
         pageDescription="My blog and stuff"
       />
-      <SingleSection
-        heading="Kimmo Sääskilahti's homepage"
-        subheading="Under construction this page is."
-      >
-        <Box boxShadow="lg">
-          <Img
-            fluid={data.reindeer.childImageSharp.fluid}
-            alt="Gatsby Docs are awesome"
-          />
-        </Box>
-      </SingleSection>
+      <BlogIndex data={data} {...props} />
     </>
   )
 }

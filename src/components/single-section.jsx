@@ -16,13 +16,12 @@ export const SingleSection = ({
         textAlign="center"
         mb={6}
         letterSpacing="wide"
-        lineHeight="short"
       >
         {heading}
       </Heading>
     ) : null}
     {subheading ? (
-      <Text fontSize="2xl" textAlign="center" mb={12} lineHeight="short">
+      <Text fontSize="2xl" textAlign="center" mb={12}>
         {subheading}
       </Text>
     ) : null}

@@ -39,7 +39,7 @@ const components = {
   h5: props => <Heading as="h5" fontSize="md" fontWeight="600" {...props} />,
   h6: props => <Heading as="h6" fontSize="sm" fontWeight="500" {...props} />,
   p: props => (
-    <Text as="p" mt={4} lineHeight="tall" {...props}>
+    <Text as="p" mt={4} {...props}>
       {props.children}
     </Text>
   ),
