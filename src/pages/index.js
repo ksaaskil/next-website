@@ -2,10 +2,8 @@ import React from "react"
 import "./index.scss"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import { Box } from "@chakra-ui/core"
 import BlogIndex from "../components/blog-list"
+import { useStaticQuery } from "gatsby"
 
 export default ({ props }) => {
   const data = useStaticQuery(
@@ -23,6 +21,7 @@ export default ({ props }) => {
                 date(formatString: "MMMM Do, YYYY")
                 title
                 description
+                thumbnail
               }
               fields {
                 slug
@@ -30,7 +29,7 @@ export default ({ props }) => {
             }
           }
         }
-        reindeer: file(relativePath: { eq: "reindeer-riisitunturi.jpg" }) {
+        reindeer: file(relativePath: { eq: "reindeer.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
@@ -46,7 +45,9 @@ export default ({ props }) => {
         pageTitle="Kimmo Sääskilahti's blog"
         pageDescription="My blog and stuff"
       />
-      <BlogIndex data={data} {...props} />
+      <SingleSection heading="Kimmo Sääskilahti's blog">
+        <BlogIndex data={data} {...props} />
+      </SingleSection>
     </>
   )
 }

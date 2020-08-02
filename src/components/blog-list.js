@@ -1,8 +1,6 @@
 import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
 import { Box, PseudoBox, Stack, Text, useColorMode } from "@chakra-ui/core"
-import SEO from "../components/seo"
-import SingleSection from "../components/single-section"
 import Img from "gatsby-image"
 
 const PostLink = ({ slug, post, img }) => {
@@ -52,20 +50,18 @@ export default function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
 
   return (
-    <>
-      <SEO pageTitle="Kimmo Sääskilahti's blog" />
-      <SingleSection heading="Kimmo Sääskilahti's blog">
-        <Stack>
-          {posts.map(({ node: post }) => (
-            <PostLink
-              key={post.fields.slug}
-              slug={post.fields.slug}
-              post={post}
-              img={data.reindeer.childImageSharp.fluid}
-            />
-          ))}
-        </Stack>
-      </SingleSection>
-    </>
+    <Stack>
+      {posts.map(({ node: post }) => {
+        const thumbnail = post.fields.thumbnail || "reindeer"
+        return (
+          <PostLink
+            key={post.fields.slug}
+            slug={post.fields.slug}
+            post={post}
+            img={data[thumbnail].childImageSharp.fluid}
+          />
+        )
+      })}
+    </Stack>
   )
 }

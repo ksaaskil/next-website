@@ -4,6 +4,7 @@ published: true
 description: Yet another blog post on why learning functional programming is fun and useful
 tags: learning,functional,python,haskell
 series: Learning functional programming
+thumbnail: reindeer
 ---
 
 This is the first part of a series on my journey in learning functional programming (FP). In this first part, I'd like to share why I spend time on learning functional programming in the first place.
