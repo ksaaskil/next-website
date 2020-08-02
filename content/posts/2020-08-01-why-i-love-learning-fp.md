@@ -6,6 +6,7 @@ tags: learning,functional,python,haskell
 series: Learning functional programming
 thumbnail: reindeer
 date: 2020-08-01
+canonical_url: https://kimmosaaskilahti.fi/blog/2020-08-01-why-i-love-learning-fp/
 ---
 
 This is the first part of a series on my journey in learning functional programming (FP). In this first part, I'd like to share why I spend time on learning functional programming in the first place.
