@@ -9,4 +9,5 @@ const PostLink = ({ post }) => (
     </Box>
   </Link>
 )
+
 export default PostLink
