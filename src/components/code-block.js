@@ -1,10 +1,11 @@
 import React from "react"
 import SyntaxHighlighter from "react-syntax-highlighter"
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs"
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
-const CodeBlock = ({ children }) => {
+const CodeBlock = ({ children, className }) => {
+  const language = className && className.replace(/language-/, "")
   return (
-    <SyntaxHighlighter language="javascript" style={docco}>
+    <SyntaxHighlighter language={language} style={dracula}>
       {children}
     </SyntaxHighlighter>
   )

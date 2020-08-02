@@ -33,9 +33,17 @@ const components = {
     </Heading>
   ),
   h2: props => (
-    <Heading as="h2" fontSize="3xl" fontWeight="900" {...props}></Heading>
+    <Heading
+      as="h2"
+      fontSize="3xl"
+      fontWeight="900"
+      mt={5}
+      {...props}
+    ></Heading>
   ),
-  h3: props => <Heading as="h3" fontSize="2xl" fontWeight="800" {...props} />,
+  h3: props => (
+    <Heading as="h3" fontSize="2xl" fontWeight="800" mt={5} {...props} />
+  ),
   h4: props => <Heading as="h4" fontSize="lg" fontWeight="700" {...props} />,
   h5: props => <Heading as="h5" fontSize="md" fontWeight="600" {...props} />,
   h6: props => <Heading as="h6" fontSize="sm" fontWeight="500" {...props} />,
@@ -59,7 +67,7 @@ const components = {
     </Callout>
   ),
   inlineCode: props => (
-    <Code variantColor="blue" fontSize="inherit" {...props} />
+    <Code bg="rgb(40, 42, 54)" color="#8BE9FD" fontSize="inherit" {...props} />
   ),
   hr: props => <Divider borderColor="gray.100" my={6} {...props} />,
   a: props => <ChakraUILink color="blue.500" {...props} />,
