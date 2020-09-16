@@ -1,5 +1,6 @@
 import React from "react"
 import "./index.scss"
+import { graphql } from 'gatsby'
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
