@@ -1,7 +1,7 @@
 ---
 title: Three non-programming books developers should read
 published: false
-description: Or at least glance through
+description: Or not, it's your choice
 tags: learning,books
 thumbnail: reindeer
 date: 2020-09-16
@@ -14,7 +14,7 @@ canonical_url: https://kimmosaaskilahti.fi/blog/2020-09-16-three-nonprogramming-
 
 Don't be put off by the title of this book from 1930s. It is *not* about becoming the most popular person in the party or about how to manipulate people to have them do what you want. It's about getting along with people, and that's one of the most important skills any software developer needs.
 
-One of the advice in the book is to never tell anyone they're wrong, even if you're 100 % sure they are wrong. The author manages very well to explain how to handle situations like that. 
+One of the advice in the book is to never tell anyone they're wrong. That sounds like a big deal in an environment like software development. But after reading the chapter, I agree: there are better ways to handle situations than telling people they're wrong. It pays off to handle conflicts carefully: after all, it might turn out to be you who's wrong.
 
 ### [The Lean Startup](https://www.goodreads.com/book/show/10127019-the-lean-startup) by Eric Ries
 
