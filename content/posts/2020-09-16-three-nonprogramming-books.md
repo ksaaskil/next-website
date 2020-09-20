@@ -1,7 +1,7 @@
 ---
 title: My three favorite non-programming books for developers
 published: false
-description: Maybe make your career in software development more satisfactory
+description: To maybe make your career in software development more satisfactory
 tags: learning,books
 thumbnail: reindeer
 date: 2020-09-16
@@ -64,7 +64,7 @@ Robert C. Martin, or "Uncle Bob", is a somewhat controversial figure: he's defin
 
 The book gives one perspective on what it means to be a professional software developer. After reading the book, you'll probably hesitate saying "I'll try" next time when your boss asks you to launch on Friday. Instead, you'll tell them "I'll do it"', "It's impossible", or "There's 50 % chance it'll be ready on Friday but it could be as late as Tuesday". You'll refuse to do quick and bad work just to be the hero of the day who managed to deliver fast.
 
-In addition to how to commit, the book teaches how to estimate, collaborate, mentor, deal with pressure, get over writer's block, and so on. If you're looking for another all-around book on the life of a professional developer, I recommend *The Pragmatic Programmer*. I did not include it on this list because it's also a programming book. As a book on programming best practices, I think *The Pragmatic Programmer* has stood the test of time a lot better than *The Clean Code*, the programming book by Robert C. Martin.
+In addition to how to commit, the book teaches how to estimate, collaborate, mentor, deal with pressure, get over writer's block, and so on. If you're looking for another all-around book on the life of a professional developer, I recommend [*The Pragmatic Programmer*](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer). I did not include it on this list because it's also a programming book. As a book on programming best practices, I think *The Pragmatic Programmer* has stood the test of time a lot better than *The Clean Code*, the programming book by Robert C. Martin, especially if you pick up the [20th Anniversary Edition](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/).
 
 ### Conclusion
 
