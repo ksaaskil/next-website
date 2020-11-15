@@ -11,7 +11,7 @@ canonical_url: https://kimmosaaskilahti.fi/blog/2020-08-22-fp-tips-for-python/
 
 <!-- http://localhost:8000/blog/2020-08-22-fp-tips-for-python/ -->
 
-Hi! In this post, I'd like to discuss functional programming techniques for Python. I'm a big fan of functional programming as I've found its principles to lead to more readable, easier-to-debug and elegant code. Python is not a functional programming language and it shouldn't be, but I think there are many technique from languages such as Haskell that are beneficial also for Python.
+Hi! In this post, I'd like to present a few functional programming techniques (FP) for Python. I'm a big fan of FP as I've found that by following its principles I can write more readable, easier-to-debug and elegant code. Python is not a functional programming language and it never will be. I think there are still many things we can learn from languages such as Haskell that are beneficial also in Python.
 
 ### Use list comprehensions
 
@@ -79,9 +79,9 @@ but this would compute `x*x` twice for every element. We can circumvent this by 
 It's not as readable as in Haskell, but sometimes it feels like the best choice. You can make the construct more readable by splitting it into multiple lines:
 
 ```python
-ys = [y for x in range(1, 51)
-        for y in (x*x,)  # let y = x*x
-        if y % 5 == 0]
+ys = [x_squared for x in range(1, 51)
+                for x_squared in (x*x,)  # let x_squared = x*x
+                if x_squared % 5 == 0]
 ```
 
 ### Use frozen dataclasses
