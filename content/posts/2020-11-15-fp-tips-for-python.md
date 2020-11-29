@@ -162,9 +162,23 @@ def change_doggie_color(doggie: Doggie, new_color: str):
 
 Continuing on the topic of immutability, we still need to work with mutable lists and dictionaries in Python code. Just because they are mutable, that doesn't mean we need to mutate them. Whenever I find myself trying to mutate a list in-place with `l.append(value)` or a dictionary with `d["key"] = value`, I stop and think if it's really necessary. Such an operation would not be available in pure functional languages such as Haskell, so it's definitely possible to write code without mutating objects in-place. Could I avoid it here?
 
-If I'm creating a new list or dictionary, maybe I could use list or dictionary comprehensions instead. If I need to add a value to an existing list, it may be better to simply create a whole new new object with the help of positional expansion: `new_list = [*old_list, value]`. Similarly, instead of adding a key to an existing dictionary, maybe I can just create a new dictionary with keyword expansion: `new_dict = { **old_dict, "key": value }`.
+If I'm creating a new list or dictionary, maybe I could use list or dictionary comprehensions instead. If I need to add a value to an existing list, it may be better to simply create a whole new new object with the help of positional expansion:
 
-Onee advantage in treating our lists as read-only is that if we use Python's [`typing`](https://docs.python.org/3/library/typing.html) system (we should!) for static type checking, we can use the read-only [`typing.Sequence`](https://docs.python.org/3/library/typing.html#typing.Sequence) type for our lists instead of the mutable [`typing.List`](https://docs.python.org/3/library/typing.html#typing.Sequence) type. Because `typing.Sequence[T]` is a read-only collection for values of type `T`, it's [covariant](https://kimmosaaskilahti.fi/blog/2020-02-10-covariance-and-contravariance-in-generic-types/) in `T`. Therefore, we can use `typing.Sequence[A]` where-ever `typing.Sequence[B]` is expected, as long as `A` is a subtype of `B`. Similarly, it's better to use the read-only [`typing.Mapping`](https://docs.python.org/3/library/typing.html#typing.Mapping) type instead of [`typing.Dict`](https://docs.python.org/3/library/typing.html#typing.Mapping).
+```python
+new_list = [*old_list, value]
+```
+
+Similarly, instead of adding a key to an existing dictionary, maybe I can just create a new dictionary with keyword expansion:
+
+```python
+new_dict = { **old_dict, "key": value }
+```
+
+One advantage in treating our lists as read-only is that if we use Python's [`typing`](https://docs.python.org/3/library/typing.html) system (we should!) for static type checking, we can use the read-only [`typing.Sequence`](https://docs.python.org/3/library/typing.html#typing.Sequence) type for our lists instead of the mutable [`typing.List`](https://docs.python.org/3/library/typing.html#typing.Sequence) type. Because `typing.Sequence[T]` is a read-only collection for values of type `T`, it's [covariant](https://kimmosaaskilahti.fi/blog/2020-02-10-covariance-and-contravariance-in-generic-types/) in `T`:
+
+>`typing.Sequence[A] <: typing.Sequence[B] if A <: B`
+
+This means that we can use `typing.Sequence[A]` where-ever `typing.Sequence[B]` is expected, as long as `A` is a subtype of `B`. For similar reasons, it's better to use the read-only [`typing.Mapping`](https://docs.python.org/3/library/typing.html#typing.Mapping) for dictionaries instead of [`typing.Dict`](https://docs.python.org/3/library/typing.html#typing.Mapping).
 
 It's up to you to decide if creating new objects instead of mutating existing ones is the right solution for your program. In performance-critical cases, it's most likely better to simply mutate lists in-place instead of suffering the overhead of creating new objects. Similarly, if creating the list includes side-effects such as writing to a database, it's better to avoid list comprehensions for readability's sake.
 
@@ -214,7 +228,7 @@ def all_better_animals_say(animals: typing.Sequence[BetterAnimal]):
 
 If any class within the `BetterAnimal` doesn't have the `say()` method of proper type, the type-checker will complain.
 
-Type unions only cover one class of use cases for inheritance, so don't expect you can always get rid of inheritance via type unions. The above example also wasn't a good example of "bad inheritance", as we could have made `Animal` an "interface" by turning it into an abstract class with abstract methods and without any hard-coded behaviour. But I hope you get the point I'm trying to make here: there are alternatives to inheritance.
+Type unions only cover one class of use cases for inheritance, so don't expect you can always get rid of inheritance via type unions. The above example also wasn't a good example of "bad inheritance", as we could have made `Animal` an "interface" by turning it into an abstract class with abstract methods and without any hard-coded behaviour. The point I'm trying to make is: always stop to think before using inheritance.
 
 ## Conclusion
 
