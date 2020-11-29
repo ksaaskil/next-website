@@ -82,6 +82,29 @@ ys = [x_squared for x in range(1, 51)
                 if x_squared % 5 == 0]
 ```
 
+### Use generator expressions and `itertools`
+
+In Haskell, expressions are evaluted lazily so it's completely natural to work with e.g. lists containing all integers. Such infinite lists are never supposed to be evaluated in full, but the values are created only when they are actually needed.
+
+Python has excellent support for such "iterators" via [generator expressions and functions](https://wiki.python.org/moin/Generators). The [`itertools`](https://docs.python.org/3/library/itertools.html) package contains many useful functions for working with iterators.
+
+As an example, let's consider the [first problem](https://projecteuler.net/problem=1) in Project Euler. Sharing solutions of Project Euler problems publicly is strongly discouraged, but since the internet already is full of answers for the first problem, I'll make an exception here. Here's the problem:
+
+> If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.
+
+We could solve this with iterators as follows:
+
+```python
+>>> from itertools import count, takewhile
+>>> ints = count(1)  # Iterator of all integers
+>>> multiples = (val for val in ints if val % 3 == 0 or val % 5 == 0)  # All integers that are multiples of 3 or five
+>>> multiples_below_1000 = takewhile(lambda val: val < 1000, multiples)  # All such integers below 1000
+>>> sum(multiples_below_1000)  # Sum of all such values, this is the evaluation step
+233168
+```
+
+This isn't the most efficient solution to the problem in Python, but I find it very easy to read and reason about.
+
 ### Use frozen dataclasses
 
 In pure functional languages such as Haskell, one cannot mutate objects in-place. Instead, one must compose a program out of pure functions that do not mutate their inputs. Code becomes essentially a pipeline, where immutable data structures flow from one transformation to the next. This kind of thinking is also encouraged in the wonderful [_Pragmatic Programmer_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/) book:
