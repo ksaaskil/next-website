@@ -1,12 +1,12 @@
 ---
 title: Functional programming tips to power up your Python code
-published: false
+published: true
 description: List comprehensions, frozen dataclasses, etc.
 tags: learning,functional,python
 series: Learning functional programming
 thumbnail: reindeer
-date: 2020-11-15
-canonical_url: https://kimmosaaskilahti.fi/blog/2020-11-15-fp-tips-for-python/
+date: 2020-11-29
+canonical_url: https://kimmosaaskilahti.fi/blog/2020-11-29-fp-tips-for-python/
 ---
 
 Hi! In this post, I'd like to present my favorite functional programming techniques (FP) for Python. I'm a big fan of FP as I've found that by following FP principles I can write code that is more readable and easier to debug. Python is not a functional programming language (and it never will be), but I think there are still many things we can learn from languages such as Haskell that are beneficial also in Python.
