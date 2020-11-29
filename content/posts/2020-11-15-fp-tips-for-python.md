@@ -1,7 +1,7 @@
 ---
 title: Functional programming tips to power up your Python code
 published: false
-description: If you optimize for performance, this post is not for you
+description: List comprehensions, frozen dataclasses, etc.
 tags: learning,functional,python
 series: Learning functional programming
 thumbnail: reindeer
@@ -9,15 +9,13 @@ date: 2020-11-15
 canonical_url: https://kimmosaaskilahti.fi/blog/2020-11-15-fp-tips-for-python/
 ---
 
-<!-- http://localhost:8000/blog/2020-11-15-fp-tips-for-python/ -->
-
-Hi! In this post, I'd like to present a few functional programming techniques (FP) for Python. I'm a big fan of FP as I've found that by following its principles I can write more readable, easier-to-debug and elegant code. Python is not a functional programming language and it never will be. I think there are still many things we can learn from languages such as Haskell that are beneficial also in Python.
+Hi! In this post, I'd like to present my favorite functional programming techniques (FP) for Python. I'm a big fan of FP as I've found that by following FP principles I can write code that is more readable and easier to debug. Python is not a functional programming language (and it never will be), but I think there are still many things we can learn from languages such as Haskell that are beneficial also in Python.
 
 ### Use list comprehensions
 
 The first technique is to use [list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) to create lists and to perform operations such as `map` and `filter` on lists. 
 
-In Haskell, you could use a list comprehension as follows:
+In Haskell, we would use list comprehensions as follows:
 
 ```haskell
 ghci> [x*2 | x <- [1..10], x*2 >= 12] 
@@ -26,7 +24,7 @@ ghci> [x*2 | x <- [1..10], x*2 >= 12]
 
 Here we're traversing the list `[1..10]` by filtering values by `x*2 >= 12` and mapping with `x*2`.
 
-In Python, you would achieve the same with
+In Python, we would achieve the same with
 
 ```python
 >>> [2*x for x in range(1, 11) if 2*x >= 12]
@@ -44,7 +42,7 @@ for i in range(1, 11):
 print(a)
 ```
 
-One can also perform `flatmap` operations with list comprehensions:
+One can also perform `flatmap`-like operations with nested list comprehensions:
 
 ```python
 >>> xss = [[1, 2], [3, 4], [5, 6]]
@@ -76,7 +74,7 @@ but this would compute `x*x` twice for every element. We can circumvent this by 
 [25, 100, 225, 400, 625, 900, 1225, 1600, 2025, 2500]
 ```
 
-It's not as readable as in Haskell, but sometimes it feels like the best choice. You can make the construct more readable by splitting it into multiple lines:
+It's not as readable as in Haskell, but sometimes it feels like the best choice. We can make the construct more readable by splitting it into multiple lines:
 
 ```python
 ys = [x_squared for x in range(1, 51)
@@ -86,9 +84,13 @@ ys = [x_squared for x in range(1, 51)
 
 ### Use frozen dataclasses
 
-As you may know, you cannot mutate objects in pure functional languages such as Haskell. Instead, you compose your program out of pure functions that do not mutate their inputs. It does not make much sense to try to write pure functional programs with Python, but I think the idea of favoring immutable objects over mutable ones is a good idea. If you never mutate objects after their creation, you've eliminated one whole class of potential bugs and most likely made your program easier to reason about.
+In pure functional languages such as Haskell, one cannot mutate objects in-place. Instead, one must compose a program out of pure functions that do not mutate their inputs. Code becomes essentially a pipeline, where immutable data structures flow from one transformation to the next. This kind of thinking is also encouraged in the wonderful [_Pragmatic Programmer_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/) book:
 
-For plain datastructures, Python's built-in [dataclasses](https://docs.python.org/3/library/dataclasses.html) are a good choice. With `frozen=True`, you can ensure your dataclasses cannot be mutated after their creation:
+> "Thinking of code as a series of (nested) transformations can be a liberating approach to programming. It takes a while to get used to, but once you've developed the habit you'll find your code becomes cleaner, your functions shorter, and your designs flatter. Give it a try."
+
+Now, it does not make much sense to try to write purely functional programs with Python, but I think the idea of favoring "transformative" code with immutable objects is a good idea. Using immutable objects also eliminates one whole class of potential bugs.
+
+For plain datastructures, Python's built-in [dataclasses](https://docs.python.org/3/library/dataclasses.html) are a good choice for immutable containers. With `frozen=True`, we can ensure the properties in our dataclasses cannot be mutated after their creation:
 
 ```python
 from dataclasses import dataclass
@@ -99,7 +101,7 @@ class Doggie:
   age: int
 ```
 
-If you want to change a `Doggie`'s name, you can use `replace`:
+If we want to change a `Doggie`'s name, we can use `replace`:
 
 ```python
 from dataclasses import replace
@@ -108,9 +110,9 @@ def change_doggie_name(doggie: Doggie, new_name: str) -> Doggie:
   return replace(doggie, name=new_name)
 ```
 
-Creating a new object every time will incur a performance penalty, but in most cases it won't have any noticeable effect. 
+Creating a new object every time will incur a performance penalty, so it's up to you to decide if the overhead is too large for your program. 
 
-It's important to remember that frozen dataclasses aren't truly mutable as one can still mutate objects within the class:
+It's important to remember that frozen dataclasses aren't truly mutable, as we can still mutate all mutable data structures within our class:
 
 ```python
 @dataclass(frozen=True)
@@ -123,7 +125,7 @@ doggie = Doggie(name="Ben", age=10, attributes={})
 doggie.attributes["color"] = "brown"  # In-place mutation
 ```
 
-You can avoid this by using frozen dataclasses as properties:
+We can avoid this by using frozen dataclasses as properties:
 
 ```python
 @dataclass(frozen=True)
@@ -145,7 +147,7 @@ Changing a doggie's name can then be achieved by chaining `replace` calls:
 black_doggie = replace(doggie, attributes=replace(doggie.attributes, color="black"))
 ```
 
-With deeply nested structures, using `replace` becomes tedious. In functional programming languages, this problem of "mutating" deeply nested structures is elegantly handled by [optics libraries](https://medium.com/@gcanti/introduction-to-optics-lenses-and-prisms-3230e73bfcfe) such as [`lens`](https://hackage.haskell.org/package/lens) in Haskell. Python has its own [`lenses`](https://pypi.org/project/lenses/) package, but I haven't found it to be that useful out there in the real world: without the power of static type checking, overuse of lenses can result in very cryptic code. 
+With deeply nested structures, using `replace` can become tedious. In functional programming languages, this problem of "mutating" deeply nested structures is elegantly handled by [optics libraries](https://medium.com/@gcanti/introduction-to-optics-lenses-and-prisms-3230e73bfcfe) such as [`lens`](https://hackage.haskell.org/package/lens) in Haskell. Python has its own [`lenses`](https://pypi.org/project/lenses/) package, but I haven't found it to be that useful out there in the real world: without the power of static type checking, overuse of lenses can result in very cryptic code.
 
 With that said, most data structures I've encountered are at most two to three levels deep and using `replace` isn't an issue, especially when using helper functions such as
 
@@ -156,24 +158,28 @@ def change_doggie_color(doggie: Doggie, new_color: str):
                                     color=new_color))
 ```
 
-I've found that it's very rare you need to mutate lists or dictionaries in-place.
+### Use immutable lists or dictionaries
 
-### Do not mutate lists or dictionaries
+Continuing on the topic of immutability, we still need to work with mutable lists and dictionaries in Python code. Just because they are mutable, that doesn't mean we need to mutate them. Whenever I find myself trying to mutate a list in-place with `l.append(value)` or a dictionary with `d["key"] = value`, I stop and think if it's really necessary. Such an operation would not be available in pure functional languages such as Haskell, so it's definitely possible to write code without mutating objects in-place. Could I avoid it here?
+
+If I'm creating a new list or dictionary, maybe I could use list or dictionary comprehensions instead. If I need to add a value to an existing list, it may be better to simply create a whole new new object with the help of positional expansion: `new_list = [*old_list, value]`. Similarly, instead of adding a key to an existing dictionary, maybe I can just create a new dictionary with keyword expansion: `new_dict = { **old_dict, "key": value }`.
+
+Onee advantage in treating our lists as read-only is that if we use Python's [`typing`](https://docs.python.org/3/library/typing.html) system (we should!) for static type checking, we can use the read-only [`typing.Sequence`](https://docs.python.org/3/library/typing.html#typing.Sequence) type for our lists instead of the mutable [`typing.List`](https://docs.python.org/3/library/typing.html#typing.Sequence) type. Because `typing.Sequence[T]` is a read-only collection for values of type `T`, it's [covariant](https://kimmosaaskilahti.fi/blog/2020-02-10-covariance-and-contravariance-in-generic-types/) in `T`. Therefore, we can use `typing.Sequence[A]` where-ever `typing.Sequence[B]` is expected, as long as `A` is a subtype of `B`. Similarly, it's better to use the read-only [`typing.Mapping`](https://docs.python.org/3/library/typing.html#typing.Mapping) type instead of [`typing.Dict`](https://docs.python.org/3/library/typing.html#typing.Mapping).
+
+It's up to you to decide if creating new objects instead of mutating existing ones is the right solution for your program. In performance-critical cases, it's most likely better to simply mutate lists in-place instead of suffering the overhead of creating new objects. Similarly, if creating the list includes side-effects such as writing to a database, it's better to avoid list comprehensions for readability's sake.
 
 ### Use type union instead of inheritance
 
-In the wonderful book [_Pragmatic Programmer_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/), there's a cool paragraph on inheritance:
+The [_Pragmatic Programmer_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/) book has an interesting paragraph on inheritance:
 
-> Do you program in an object-oriented language? Do you use inheritance?
-> If so, stop! It probably isn't what you want to do.
+> "Do you program in an object-oriented language? Do you use inheritance? If so, stop! It probably isn't what you want to do."
 
-How to avoid inheritance in Python? Let's assume you'd like to work with objects of type `Doggie` and `Cat`. Both `Doggie` and `Cat` have a `say()` method and you want to put such animals in containers such as list. The classis Programming 101 solution is to make a super-class `Animal` and inherit `Doggie` and `Cat` from `Animal`:
+How to avoid inheritance in Python? Let's assume you'd like to work with objects of type `Doggie` and `Cat`. Both `Doggie` and `Cat` have a `say()` method and you want to put such animals in containers such as (immutable) lists. The classic Programming 101 solution would be to create a super-class `Animal` and inherit `Doggie` and `Cat` from `Animal`:
 
 ```python
 import abc
 
-class Animal(abc.ABC):
-  @abc.abstractmethod
+class Animal:
   def say(self) -> str:
     raise NotImplementedError()
 
@@ -186,7 +192,7 @@ class Cat(Animal):
     return "Meow!"
 ```
 
-Now you get classic polymorphism:
+Now we get classic polymorphism:
 
 ```python
 import typing
@@ -196,7 +202,7 @@ def all_animals_say(animals: typing.Sequence[Animal]):
     animal.say()
 ```
 
-However, we can achieve the same without any of the problems of inheritance by using a _type union_:
+However, we can achieve the same without any of the problems of inheritance by using a [_type union_](https://docs.python.org/3/library/typing.html#typing.Union):
 
 ```python
 BetterAnimal = typing.Union[Doggie, Cat]
@@ -208,19 +214,8 @@ def all_better_animals_say(animals: typing.Sequence[BetterAnimal]):
 
 If any class within the `BetterAnimal` doesn't have the `say()` method of proper type, the type-checker will complain.
 
-Of course, type unions only cover one class of use cases for inheritance, so don't expect you can always get rid of inheritance via type unions. Above, the case of `Animal` superclass also wasn't a good example of true "inheritance", as the parent class worked more like an interface than all-mighty super-class.
+Type unions only cover one class of use cases for inheritance, so don't expect you can always get rid of inheritance via type unions. The above example also wasn't a good example of "bad inheritance", as we could have made `Animal` an "interface" by turning it into an abstract class with abstract methods and without any hard-coded behaviour. But I hope you get the point I'm trying to make here: there are alternatives to inheritance.
 
+## Conclusion
 
-### Immutable data structures
-
-Positional expansion.
-
-Keyword expansion.
-
-typing.Sequence
-
-### Partial application
-
-Addresses "missing arrow"
-
-### Streams or "lazy" lists
+This concludes my list of functional programming tips for Python. If you have any other tips, comments or questions, please leave a comment! Thanks for reading!
