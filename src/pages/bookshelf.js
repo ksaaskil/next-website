@@ -1,7 +1,7 @@
 import React from "react"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
-import { Box, Stack, Text, Flex } from "@chakra-ui/core";
+import { Box, Stack, Text, Flex, Link } from "@chakra-ui/core";
 import Img from "gatsby-image"
 
 const BookshelfHeader = () => {
@@ -13,13 +13,17 @@ const BookshelfHeader = () => {
   </Box>)
 }
 
-const Book = ({title, author, description, imgData }) => {
+const Book = ({title, author, description, imgData, url }) => {
   return (<Flex p="6">
     <Flex width="300px">
       {!!imgData ? <Img fixed={imgData.childImageSharp.fixed} /> : null}
     </Flex>
     <Stack width="100%">
-      <Text as="h3" fontWeight="bold" fontSize="xl">{title}</Text>
+      {!url ? <Text as="h3" fontWeight="bold" fontSize="xl">{title}</Text>
+       :
+       <Link href={url} isExternal fontWeight="bold" fontSize="xl" textDecoration="underline">
+          {title}
+        </Link>}
       <Text as="h3" fontSize="lg"><Text as="i">{author}</Text></Text>
       <Text fontSize="md">{description}</Text>
     </Stack>
@@ -33,8 +37,7 @@ const BookList = ({books, title}) => {
       <Text fontSize="2xl" fontWeight="bold" mb="6">{title}</Text>
     <Stack spacing="48px">
       {books.map(book => 
-        <Book key={book.title} title={book.title} author={book.author}
-        description={book.description} imgData={book.imgData} />)}
+        <Book key={book.title} {...book} />)}
       </Stack>
     </Box>)
 }
@@ -60,6 +63,12 @@ export default ({ data }) => {
       title: "Concise Laws of Human Nature",
       author: "Robert Greene",
       cover: "concise-laws"
+    },
+    {
+      title: "The Five Dysfunctions of a Team: Participant Workbook for Team Leaders",
+      author: "Patrick Lencioni",
+      cover: "five-dysfunctions-workbook",
+      url: "https://www.amazon.com/Five-Dysfunctions-Team-Participant-Workbook/dp/1118118782"
     }
   ]
   
