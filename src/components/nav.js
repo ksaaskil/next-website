@@ -38,6 +38,8 @@ import { Stack, Icon, useColorMode } from "@chakra-ui/core"
   </nav>
 ) */
 
+const spacing = "2rem";
+
 export const Navigation = () => {
   // const { colorMode, toggleColorMode } = useColorMode()
 
@@ -50,7 +52,7 @@ export const Navigation = () => {
       mb={6}
       flexWrap="wrap"
     >
-      <Stack isInline>
+      <Stack isInline spacing={{spacing}}>
         {/* <Icon name={colorMode === "dark" ? "moon" : "sun"} />
         <Switch
           isChecked={colorMode === "dark"}
@@ -60,11 +62,11 @@ export const Navigation = () => {
         <Link as={GatsbyLink} to="/">
           Home
         </Link>
-        {/* <Link as={GatsbyLink} to="/blog/">
-          Blog
-        </Link> */}
+        <Link as={GatsbyLink} to="/bookshelf">
+          Bookshelf
+        </Link>
       </Stack>
-      <Stack isInline overflowWrap="normal">
+      <Stack isInline spacing={{spacing}} overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>
