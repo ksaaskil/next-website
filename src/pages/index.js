@@ -75,8 +75,8 @@ export default ({ props }) => {
   return (
     <>
       <SEO
-        pageTitle="Kimmo Sääskilahti's blog"
-        pageDescription="My blog and stuff"
+        pageTitle="Kimmo Sääskilahti | kimmosaaskilahti.fi"
+        pageDescription="Kimmo Sääskilahti, senior software developer"
       />
       <SingleSection >
         <Hi data={data} {...props}/>
