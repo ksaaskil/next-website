@@ -1,29 +1,36 @@
 import React from "react"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
-import { Heading } from "@chakra-ui/core"
 import { Box, Stack, Text, Flex } from "@chakra-ui/core";
 import Img from "gatsby-image"
 
+const BookshelfHeader = () => {
+  return (<Box>
+    <Text fontSize="lg">
+      Here are some books that have measurably contributed to
+      my technical and non-technical skills.
+    </Text>
+  </Box>)
+}
 
 const Book = ({title, author, description, imgData }) => {
   return (<Flex p="6">
-    <Flex width="250px">
+    <Flex width="300px">
       {!!imgData ? <Img fixed={imgData.childImageSharp.fixed} /> : null}
     </Flex>
-    <Box>
+    <Stack width="100%">
       <Text as="h3" fontWeight="bold" fontSize="xl">{title}</Text>
-      <Text as="p"><Text as="i">{author}</Text></Text>
-      <Text>{description}</Text>
-    </Box>
+      <Text as="h3" fontSize="lg"><Text as="i">{author}</Text></Text>
+      <Text fontSize="md">{description}</Text>
+    </Stack>
     </Flex>
   )
 }
 
 const BookList = ({books, title}) => {
   return (
-    <Box p="6">
-      <Text fontSize="3xl" fontWeight="bold">{title}</Text>
+    <Box py="6">
+      <Text fontSize="2xl" fontWeight="bold" mb="6">{title}</Text>
     <Stack spacing="48px">
       {books.map(book => 
         <Book key={book.title} title={book.title} author={book.author}
@@ -42,17 +49,17 @@ export default ({ data }) => {
     {
       title: "The Lean Startup",
       author: "Eric Ries",
-      cover: "how-to-influence"
+      cover: "lean-startup"
     },
     {
       title: "The Clean Coder",
       author: "Robert C. Martin",
-      cover: "how-to-influence"
+      cover: "clean-coder"
     },
     {
       title: "Concise Laws of Human Nature",
       author: "Robert Greene",
-      cover: "how-to-influence"
+      cover: "concise-laws"
     }
   ]
   
@@ -60,22 +67,22 @@ export default ({ data }) => {
     {
       title: "Designing Data-Intensive Applications",
       author: "Martin Kleppman",
-      cover: "how-to-influence"
+      cover: "designing-data-intensive"
     },
     {
       title: "The Pragmatic Programmer: Your Journey to Mastery, 20th Anniversary Edition",
       author: "Andy Hunt, Dave Thomas",
-      cover: "how-to-influence"
+      cover: "pragmatic-programmer"
     },
     {
       title: "Functional Programming in Scala",
       author: "Paul Chiusano and Rúnar Bjarnason",
-      cover: "how-to-influence"
+      cover: "functional-programming-in-scala"
     } ,
     {
       title: "Clean Code",
       author: "Robert C. Martin",
-      cover: "how-to-influence"
+      cover: "clean-code"
     }
   ]
   const allImages = data.allImages.edges.map(e => e.node);
@@ -104,6 +111,7 @@ export default ({ data }) => {
         pageDescription="My favorite books for developers"
       />
       <SingleSection heading="Kimmo's bookshelf">
+        <BookshelfHeader></BookshelfHeader>
         <BookList title="Non-technical books" books={nonTechBooksWithImgData} />
         <BookList title="Technical books" books={techBooksWithImgData} />
       </SingleSection>
