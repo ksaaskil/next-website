@@ -8,7 +8,7 @@ const PostLink = ({ slug, post, img }) => {
   const colorMode = "light"
 
   return (
-    <PseudoBox m={2}>
+    <PseudoBox mx={2} my={4}>
       <Link to={slug}>
         <PseudoBox
           backgroundColor={colorMode === "dark" ? "gray.600" : "gray.100"}
@@ -24,22 +24,25 @@ const PostLink = ({ slug, post, img }) => {
           <Box rounded="lg" flexShrink={0} width={{ md: 200 }}>
             <Img fluid={img} />
           </Box>
-          <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+          <Stack mt={{ base: 4, md: 0 }} ml={{ md: 6 }} spacing={1}>
             <Text
               fontWeight="bold"
               textTransform="uppercase"
-              fontSize="sm"
+              fontSize="md"
               letterSpacing="wide"
               color="teal.600"
             >
               {post.frontmatter.title}
             </Text>
-
-            {post.frontmatter.description}
-            <Text mt={2} color={colorMode === "dark" ? "gray.200" : "gray.600"}>
+            <Text>
+              <Text as="i">
+                {post.frontmatter.description}
+              </Text>
+            </Text>
+            <Text mt={2} fontSize="md" color={colorMode === "dark" ? "gray.200" : "gray.600"}>
               {post.excerpt}
             </Text>
-          </Box>
+          </Stack>
         </PseudoBox>
       </Link>
     </PseudoBox>
@@ -50,7 +53,7 @@ export default function BlogIndex({ data }) {
   const { edges: posts } = data.allMdx
 
   return (
-    <Stack>
+    <Stack spacing={12}>
       {posts.map(({ node: post }) => {
         const thumbnail = post.fields.thumbnail || "reindeer"
         return (
