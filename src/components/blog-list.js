@@ -1,6 +1,6 @@
 import React from "react"
-import { Link, graphql, StaticQuery } from "gatsby"
-import { Box, PseudoBox, Stack, Text, useColorMode } from "@chakra-ui/core"
+import { Link } from "gatsby"
+import { Box, PseudoBox, Stack, Text } from "@chakra-ui/core"
 import Img from "gatsby-image"
 
 const PostLink = ({ slug, post, img }) => {

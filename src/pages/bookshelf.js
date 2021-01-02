@@ -18,11 +18,13 @@ const BookshelfHeader = () => {
 
 const Book = ({ title, author, description, imgData, url }) => {
   return (
-    <Flex p="6">
-      <Flex width="300px">
-        {imgData ? <Img fixed={imgData.childImageSharp.fixed} /> : null}
+    <Box p="6" display={{ md: "flex" }}>
+      <Flex flexShrink={0} px={6} justify="center">
+        <Box width={{ md: 40, base: "80%" }}>
+          {imgData ? <Img fluid={imgData.childImageSharp.fluid} /> : null}
+        </Box>
       </Flex>
-      <Stack width="100%">
+      <Stack mt={{ base: 8, md: 0 }} ml={{ md: 6 }} width="100%">
         {!url ? (
           <Text as="h3" fontWeight="bold" fontSize="xl">
             {title}
@@ -43,7 +45,7 @@ const Book = ({ title, author, description, imgData, url }) => {
         </Text>
         <Text fontSize="md">{description}</Text>
       </Stack>
-    </Flex>
+    </Box>
   )
 }
 
@@ -153,16 +155,6 @@ export default ({ data }) => {
 
 export const query = graphql`
   query covers {
-    howToInfluence: file(relativePath: { eq: "how-to-influence.jpg" }) {
-      childImageSharp {
-        fixed(width: 150) {
-          ...GatsbyImageSharpFixed
-        }
-        fluid(maxWidth: 250) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     allImages: allFile(
       filter: { extension: { regex: "/(jpg)|(png)|(jpeg)/" } }
     ) {
@@ -174,12 +166,8 @@ export const query = graphql`
             fixed(width: 150) {
               ...GatsbyImageSharpFixed
             }
-            fluid(maxWidth: 250) {
-              base64
-              src
-              srcSet
-              aspectRatio
-              sizes
+            fluid(maxWidth: 300, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

@@ -5,18 +5,18 @@ import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
 import { useStaticQuery } from "gatsby"
-import { Box, Flex, Avatar, Stack, Text, Image, Heading } from "@chakra-ui/core"
+import { Box, Flex, Stack, Text } from "@chakra-ui/core"
 import Img from "gatsby-image"
 
 const Hi = ({ data }) => {
   return (
-    <Flex p={8} mb={6}>
-      <Flex>
-        <Box width="250px" borderRadius="125px" overflow="hidden">
+    <Box px={8} mb={6} display={{ md: "flex" }}>
+      <Flex align="center">
+        <Box width="250px" mx="auto" borderRadius="125px" overflow="hidden">
           <Img fluid={data.me.childImageSharp.fluid} />
         </Box>
       </Flex>
-      <Stack width="100%" ml={12}>
+      <Stack width="100%" ml={{ md: 12 }} mt={{ base: 12, md: 0 }}>
         <Text as="h2" fontWeight="bold" fontSize="2xl">
           Hi! I&apos;m Kimmo Sääskilahti.
         </Text>
@@ -24,7 +24,7 @@ const Hi = ({ data }) => {
           I&apos;m a senior software developer at Silo AI.
         </Text>
       </Stack>
-    </Flex>
+    </Box>
   )
 }
 
