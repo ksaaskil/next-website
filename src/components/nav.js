@@ -44,12 +44,20 @@ const spacing = 8
 
 const NavLink = props => {
   return (
-    <Link
-      as={GatsbyLink}
-      fontWeight="400"
-      activeStyle={{ textDecoration: "underline", fontWeight: 400 }}
-      {...props}
-    />
+    <Box>
+      <Link
+        className="nav-link"
+        as={props.to ? GatsbyLink : Link}
+        fontWeight="400"
+        textShadow="1px 1px #aaaaaa"
+        _hover={{ textDecoration: "none" }}
+        activeStyle={{
+          textShadow: "0 0 0 black",
+          fontWeight: 400,
+        }}
+        {...props}
+      />
+    </Box>
   )
 }
 
@@ -69,9 +77,9 @@ export const Navigation = () => {
       <Stack isInline spacing={spacing}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/bookshelf">Bookshelf</NavLink>
-        <Link href="https://ksaaskil.github.io" isExternal>
+        <NavLink href="https://ksaaskil.github.io" isExternal>
           CV <Icon ml={1} as={FaExternalLinkAlt} />
-        </Link>
+        </NavLink>
       </Stack>
       <Stack isInline spacing={spacing} overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
