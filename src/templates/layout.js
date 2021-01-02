@@ -1,7 +1,7 @@
 import React from "react"
 import "./layout.scss"
 import { Navigation } from "../components/nav"
-import { Stack, useColorMode } from "@chakra-ui/core"
+import { Stack } from "@chakra-ui/core"
 
 const Layout = ({ children }) => {
   // const { colorMode } = useColorMode()

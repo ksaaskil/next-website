@@ -1,11 +1,11 @@
 import React from "react"
 import "./index.scss"
-import { graphql } from 'gatsby'
+import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
 import { useStaticQuery } from "gatsby"
-import { Box, Flex, Avatar, Stack, Text, Image, Heading } from "@chakra-ui/core";
+import { Box, Flex, Avatar, Stack, Text, Image, Heading } from "@chakra-ui/core"
 import Img from "gatsby-image"
 
 const Hi = ({ data }) => {
@@ -18,10 +18,10 @@ const Hi = ({ data }) => {
       </Flex>
       <Stack width="100%" ml={12}>
         <Text as="h2" fontWeight="bold" fontSize="2xl">
-          Hi! I'm Kimmo Sääskilahti.
+          Hi! I&apos;m Kimmo Sääskilahti.
         </Text>
         <Text fontSize="lg">
-          I'm a senior software developer at Silo AI.
+          I&apos;m a senior software developer at Silo AI.
         </Text>
       </Stack>
     </Flex>
@@ -78,9 +78,17 @@ export default ({ props }) => {
         pageTitle="Kimmo Sääskilahti | kimmosaaskilahti.fi"
         pageDescription="Kimmo Sääskilahti, senior software developer"
       />
-      <SingleSection >
-        <Hi data={data} {...props}/>
-        <Text as="h2" fontSize="2xl" fontWeight="bold" textAlign="center" mb={6}>My blog posts</Text>
+      <SingleSection>
+        <Hi data={data} {...props} />
+        <Text
+          as="h2"
+          fontSize="2xl"
+          fontWeight="bold"
+          textAlign="center"
+          mb={6}
+        >
+          My blog posts
+        </Text>
         <BlogIndex data={data} {...props} />
       </SingleSection>
     </>

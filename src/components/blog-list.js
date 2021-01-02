@@ -35,11 +35,13 @@ const PostLink = ({ slug, post, img }) => {
               {post.frontmatter.title}
             </Text>
             <Text>
-              <Text as="i">
-                {post.frontmatter.description}
-              </Text>
+              <Text as="i">{post.frontmatter.description}</Text>
             </Text>
-            <Text mt={2} fontSize="md" color={colorMode === "dark" ? "gray.200" : "gray.600"}>
+            <Text
+              mt={2}
+              fontSize="md"
+              color={colorMode === "dark" ? "gray.200" : "gray.600"}
+            >
               {post.excerpt}
             </Text>
           </Stack>
