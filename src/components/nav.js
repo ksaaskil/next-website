@@ -7,7 +7,9 @@ import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
 import { Link } from "@chakra-ui/react"
-import { Stack } from "@chakra-ui/react"
+import { Box, Stack } from "@chakra-ui/react"
+import { FaExternalLinkAlt } from "react-icons/fa"
+import { Icon } from "@chakra-ui/react"
 
 /* const Nav = () => (
   <nav className="nav">
@@ -38,7 +40,18 @@ import { Stack } from "@chakra-ui/react"
   </nav>
 ) */
 
-const spacing = 4
+const spacing = 8
+
+const NavLink = props => {
+  return (
+    <Link
+      as={GatsbyLink}
+      fontWeight="400"
+      activeStyle={{ textDecoration: "underline", fontWeight: 400 }}
+      {...props}
+    />
+  )
+}
 
 export const Navigation = () => {
   // const { colorMode, toggleColorMode } = useColorMode()
@@ -49,21 +62,15 @@ export const Navigation = () => {
       isInline
       justify="space-around"
       py={4}
+      pl={12}
       mb={6}
       flexWrap="wrap"
     >
       <Stack isInline spacing={spacing}>
-        {/* <Icon name={colorMode === "dark" ? "moon" : "sun"} />
-        <Switch
-          isChecked={colorMode === "dark"}
-          onChange={() => toggleColorMode()}
-        /> */}
-
-        <Link as={GatsbyLink} to="/">
-          Home
-        </Link>
-        <Link as={GatsbyLink} to="/bookshelf">
-          Bookshelf
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/bookshelf">Bookshelf</NavLink>
+        <Link href="https://ksaaskil.github.io" isExternal>
+          CV <Icon ml={1} as={FaExternalLinkAlt} />
         </Link>
       </Stack>
       <Stack isInline spacing={spacing} overflowWrap="normal">

@@ -14,9 +14,9 @@ const AboutSite = () => {
     <Box>
       <Text>
         This page has been built with{" "}
-        <ExternalLink href="https://www.gatsbyjs.com/">Gatsby</ExternalLink>
-        and <ExternalLink href="https://chakra-ui.com/">Chakra UI</ExternalLink>
-        . You can find the source code{" "}
+        <ExternalLink href="https://www.gatsbyjs.com/">Gatsby</ExternalLink> and{" "}
+        <ExternalLink href="https://chakra-ui.com/">Chakra UI</ExternalLink>.
+        You can find the source code{" "}
         <ExternalLink href="https://github.com/ksaaskil/kimmosaaskilahti.fi">
           here
         </ExternalLink>
