@@ -10,13 +10,18 @@ import Img from "gatsby-image"
 
 const Hi = ({ data }) => {
   return (
-    <Box px={8} mb={6} display={{ md: "flex" }}>
+    <Box px={8} mb={12} display={{ md: "flex" }}>
       <Flex align="center">
         <Box width="250px" mx="auto" borderRadius="125px" overflow="hidden">
           <Img fluid={data.me.childImageSharp.fluid} />
         </Box>
       </Flex>
-      <Stack width="100%" ml={{ md: 12 }} mt={{ base: 12, md: 0 }}>
+      <Stack
+        width="100%"
+        ml={{ md: 12 }}
+        mt={{ base: 12, md: 0 }}
+        textAlign={{ base: "center", md: "left" }}
+      >
         <Text as="h2" fontWeight="bold" fontSize="2xl">
           Hi! I&apos;m Kimmo Sääskilahti.
         </Text>
