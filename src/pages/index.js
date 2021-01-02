@@ -5,16 +5,9 @@ import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
 import { useStaticQuery } from "gatsby"
-import { Box, Flex, Stack, Text, Link } from "@chakra-ui/core"
+import { Box, Flex, Stack, Text } from "@chakra-ui/core"
 import Img from "gatsby-image"
-
-const ExternalLink = ({ children, ...props }) => {
-  return (
-    <Link className="external-link" color="teal.500" isExternal {...props}>
-      {children}
-    </Link>
-  )
-}
+import ExternalLink from "../components/external-link"
 
 const AboutSite = () => {
   return (
