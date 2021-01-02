@@ -1,7 +1,7 @@
 {
-  "name": "next-website",
+  "name": "kimmosaaskilahti.fi",
   "private": true,
-  "description": "My website built in Gatsby",
+  "description": "kimmosaaskilahti.fi built in Gatsby",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -12,9 +12,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn develop",
     "serve": "gatsby serve",
-    "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "jest"
   },
   "dependencies": {
     "@chakra-ui/core": "^0.7.0",
@@ -43,21 +41,22 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-syntax-highlighter": "^15.4.3",
     "react-typography": "^0.16.19"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-actions": "^5.1.1",
-    "@storybook/addon-links": "^5.1.1",
-    "@storybook/addons": "^5.1.1",
-    "@storybook/react": "^5.1.1",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-preset-gatsby": "^0.2.14",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.22.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-environment-enzyme": "^7.1.1",
@@ -66,6 +65,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ksaaskil/next-website"
+    "url": "https://github.com/ksaaskil/kimmosaaskilahti.fi"
   }
 }

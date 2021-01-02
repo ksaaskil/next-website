@@ -18,18 +18,6 @@ yarn develop
 yarn build
 ```
 
-### Run Storybook
-
-```bash
-yarn storybook
-```
-
-### Build static Storybook
-
-```bash
-yarn build-storybook
-```
-
 ### Serve the build
 
 ```bash
