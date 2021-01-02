@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, PseudoBox, Stack, Text } from "@chakra-ui/core"
+import { Box, Stack, Text } from "@chakra-ui/react"
 import Img from "gatsby-image"
 
 const PostLink = ({ slug, post, img }) => {
@@ -8,9 +8,9 @@ const PostLink = ({ slug, post, img }) => {
   const colorMode = "light"
 
   return (
-    <PseudoBox mx={2} my={4}>
+    <Box mx={2} my={4}>
       <Link to={slug}>
-        <PseudoBox
+        <Box
           backgroundColor={colorMode === "dark" ? "gray.600" : "gray.100"}
           _hover={{
             bg: colorMode === "dark" ? "gray.500" : "gray.200",
@@ -45,9 +45,9 @@ const PostLink = ({ slug, post, img }) => {
               {post.excerpt}
             </Text>
           </Stack>
-        </PseudoBox>
+        </Box>
       </Link>
-    </PseudoBox>
+    </Box>
   )
 }
 

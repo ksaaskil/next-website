@@ -6,8 +6,8 @@ import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
-import { Link, Switch } from "@chakra-ui/core"
-import { Stack, Icon, useColorMode } from "@chakra-ui/core"
+import { Link } from "@chakra-ui/react"
+import { Stack } from "@chakra-ui/react"
 
 /* const Nav = () => (
   <nav className="nav">
@@ -38,7 +38,7 @@ import { Stack, Icon, useColorMode } from "@chakra-ui/core"
   </nav>
 ) */
 
-const spacing = "2rem"
+const spacing = 4
 
 export const Navigation = () => {
   // const { colorMode, toggleColorMode } = useColorMode()
@@ -52,7 +52,7 @@ export const Navigation = () => {
       mb={6}
       flexWrap="wrap"
     >
-      <Stack isInline spacing={{ spacing }}>
+      <Stack isInline spacing={spacing}>
         {/* <Icon name={colorMode === "dark" ? "moon" : "sun"} />
         <Switch
           isChecked={colorMode === "dark"}
@@ -66,7 +66,7 @@ export const Navigation = () => {
           Bookshelf
         </Link>
       </Stack>
-      <Stack isInline spacing={{ spacing }} overflowWrap="normal">
+      <Stack isInline spacing={spacing} overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>

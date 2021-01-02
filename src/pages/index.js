@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
 import { useStaticQuery } from "gatsby"
-import { Box, Flex, Stack, Text } from "@chakra-ui/core"
+import { Box, Flex, Stack, Text } from "@chakra-ui/react"
 import Img from "gatsby-image"
 import ExternalLink from "../components/external-link"
 
@@ -14,9 +14,8 @@ const AboutSite = () => {
     <Box>
       <Text>
         This page has been built with{" "}
-        <ExternalLink href="https://github.com/gatsbyjs/gatsby">
-          Gatsby
-        </ExternalLink>
+        <ExternalLink href="https://www.gatsbyjs.com/">Gatsby</ExternalLink>
+        and <ExternalLink href="https://chakra-ui.com/">Chakra UI</ExternalLink>
         . You can find the source code{" "}
         <ExternalLink href="https://github.com/ksaaskil/kimmosaaskilahti.fi">
           here

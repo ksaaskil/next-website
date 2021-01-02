@@ -1,7 +1,7 @@
 import React from "react"
 import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
-import { Box, Stack, Text, Flex, Link } from "@chakra-ui/core"
+import { Box, Stack, Text, Flex, Link } from "@chakra-ui/react"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 
