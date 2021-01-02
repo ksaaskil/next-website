@@ -48,8 +48,7 @@ const NavLink = props => {
       <Link
         className="nav-link"
         as={props.to ? GatsbyLink : Link}
-        fontWeight="400"
-        textShadow="1px 1px #aaaaaa"
+        fontWeight="600"
         _hover={{ textDecoration: "none" }}
         activeStyle={{
           textShadow: "0 0 0 black",
@@ -81,7 +80,7 @@ export const Navigation = () => {
           CV <Icon ml={1} as={FaExternalLinkAlt} />
         </NavLink>
       </Stack>
-      <Stack isInline spacing={spacing} overflowWrap="normal">
+      {/* <Stack isInline spacing={spacing} overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>
@@ -100,7 +99,7 @@ export const Navigation = () => {
         <Link href="https://dev.to/ksaaskil" isExternal>
           dev.to
         </Link>
-      </Stack>
+      </Stack> */}
     </Stack>
   )
 }
