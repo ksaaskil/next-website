@@ -5,8 +5,35 @@ import SEO from "../components/seo"
 import SingleSection from "../components/single-section"
 import BlogIndex from "../components/blog-list"
 import { useStaticQuery } from "gatsby"
-import { Box, Flex, Stack, Text } from "@chakra-ui/core"
+import { Box, Flex, Stack, Text, Link } from "@chakra-ui/core"
 import Img from "gatsby-image"
+
+const ExternalLink = ({ children, ...props }) => {
+  return (
+    <Link className="external-link" color="teal.500" isExternal {...props}>
+      {children}
+    </Link>
+  )
+}
+
+const AboutSite = () => {
+  return (
+    <Box>
+      <Text>
+        This page has been built with{" "}
+        <ExternalLink href="https://github.com/gatsbyjs/gatsby">
+          Gatsby
+        </ExternalLink>
+        . You can find the source code{" "}
+        <ExternalLink href="https://github.com/ksaaskil/kimmosaaskilahti.fi">
+          here
+        </ExternalLink>
+        . The layout and content are inspired by{" "}
+        <ExternalLink href="https://victoria.dev">victoria.dev</ExternalLink>.
+      </Text>
+    </Box>
+  )
+}
 
 const Hi = ({ data }) => {
   return (
@@ -28,6 +55,7 @@ const Hi = ({ data }) => {
         <Text fontSize="lg">
           I&apos;m a senior software developer at Silo AI.
         </Text>
+        <AboutSite />
       </Stack>
     </Box>
   )
