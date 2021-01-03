@@ -12,6 +12,7 @@ import DevToIcon from "../assets/devto.logo.svg"
 import InstagramIcon from "../assets/instagram.logo.svg"
 import GitHubIcon from "../assets/github.logo.svg"
 import GoogleScholarIcon from "../assets/scholar.logo.svg"
+import { FaHeart } from "react-icons/fa"
 
 const Hello = () => {
   return (
@@ -94,9 +95,95 @@ const Hi = ({ data }) => {
         textAlign={{ base: "center", md: "left" }}
       >
         <Hello />
+
+        <ILove />
         <Links />
         <AboutSite />
       </Stack>
+    </Box>
+  )
+}
+
+const loves = [
+  {
+    name: "Science",
+  },
+  {
+    name: "Getting ideas",
+  },
+  {
+    name: "Programming",
+  },
+  {
+    name: "Developing",
+  },
+  {
+    name: "Birds",
+  },
+  {
+    name: "Living Things",
+  },
+  {
+    name: "Dancing",
+  },
+  {
+    name: "Photography",
+  },
+  {
+    name: "Reading",
+  },
+  {
+    name: "Brainstorming",
+  },
+  {
+    name: "Yoga",
+  },
+  {
+    name: "Learning",
+  },
+  {
+    name: "Solving Problems",
+  },
+  {
+    name: "Organizing",
+  },
+]
+
+const INTERVAL_MS = 3000
+
+const ILove = () => {
+  const [ind, setInd] = React.useState(0)
+
+  React.useEffect(() => {
+    const interval = setTimeout(() => {
+      const newInd = (ind + 1) % loves.length
+      console.log(`Setting to ${newInd}`)
+      setInd(newInd)
+    }, INTERVAL_MS)
+    return () => clearTimeout(interval)
+  }, [ind])
+
+  const [opacity, setOpacity] = React.useState(0)
+
+  React.useEffect(() => {
+    const opacityInterval = setTimeout(() => {
+      const newOpacity = Math.abs(opacity - 1)
+      console.log(`Setting to opacity ${opacity}`)
+      setOpacity(newOpacity)
+    }, INTERVAL_MS / 2)
+    return () => clearTimeout(opacityInterval)
+  }, [opacity])
+
+  return (
+    <Box>
+      <Text>
+        <Text as="span" textTransform="uppercase" letterSpacing={2}>
+          I <Icon color="red.500" mx={2} as={FaHeart} />{" "}
+          <Text as="span" transition="opacity 0.5s" opacity={opacity}>
+            {loves[ind].name}
+          </Text>
+        </Text>
+      </Text>
     </Box>
   )
 }
