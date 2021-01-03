@@ -20,9 +20,7 @@ const Hello = () => {
       <Text as="h2" fontWeight="bold" fontSize="2xl">
         Hi! I&apos;m Kimmo Sääskilahti.
       </Text>
-      <Text fontSize="lg">
-        I&apos;m a senior software developer at Silo AI.
-      </Text>
+      <Text fontSize="lg">I&apos;m a senior software developer.</Text>
     </Box>
   )
 }
@@ -108,9 +106,9 @@ const loves = [
   {
     name: "Science",
   },
-  {
+  /* {
     name: "Getting ideas",
-  },
+  }, */
   {
     name: "Programming",
   },
@@ -120,9 +118,9 @@ const loves = [
   {
     name: "Birds",
   },
-  {
+  /* {
     name: "Living Things",
-  },
+  }, */
   {
     name: "Dancing",
   },
@@ -150,36 +148,44 @@ const loves = [
 ]
 
 const INTERVAL_MS = 3000
+const OPACITY_ANIMATION_STEPS = 100
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max))
+}
+
+function getNewRandomInt(max, oldInt) {
+  const candidate = getRandomInt(max)
+  return candidate === oldInt ? getNewRandomInt(max) : candidate
+}
 
 const ILove = () => {
   const [ind, setInd] = React.useState(0)
-
-  React.useEffect(() => {
-    const interval = setTimeout(() => {
-      const newInd = (ind + 1) % loves.length
-      console.log(`Setting to ${newInd}`)
-      setInd(newInd)
-    }, INTERVAL_MS)
-    return () => clearTimeout(interval)
-  }, [ind])
-
+  const [t, setT] = React.useState((0.0 * INTERVAL_MS) / 4.0)
   const [opacity, setOpacity] = React.useState(0)
 
   React.useEffect(() => {
-    const opacityInterval = setTimeout(() => {
-      const newOpacity = Math.abs(opacity - 1)
-      console.log(`Setting to opacity ${opacity}`)
+    const tTimeout = setTimeout(() => {
+      const newT = t + INTERVAL_MS / OPACITY_ANIMATION_STEPS
+      const newOpacity =
+        -0.5 * (Math.cos((newT * 2 * Math.PI) / INTERVAL_MS) - 1)
+      setT(newT)
       setOpacity(newOpacity)
-    }, INTERVAL_MS / 2)
-    return () => clearTimeout(opacityInterval)
-  }, [opacity])
+      if (newT % INTERVAL_MS == 0) {
+        // const newInd = (ind + 1) % loves.length
+        const newInd = getNewRandomInt(loves.length, ind)
+        setInd(newInd)
+      }
+    }, INTERVAL_MS / OPACITY_ANIMATION_STEPS)
+    return () => clearTimeout(tTimeout)
+  }, [t, ind])
 
   return (
     <Box>
       <Text>
         <Text as="span" textTransform="uppercase" letterSpacing={2}>
           I <Icon color="red.500" mx={2} as={FaHeart} />{" "}
-          <Text as="span" transition="opacity 0.5s" opacity={opacity}>
+          <Text as="span" opacity={opacity}>
             {loves[ind].name}
           </Text>
         </Text>
