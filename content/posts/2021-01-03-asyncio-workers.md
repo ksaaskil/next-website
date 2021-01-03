@@ -4,7 +4,7 @@ published: true
 description: Avoid callbacks with asyncio like a boss
 tags: learning,python,asyncio
 thumbnail: reindeer
-date: 2021-03-01
+date: 2021-01-03
 canonical_url: https://kimmosaaskilahti.fi/blog/2021-01-03-asyncio-workers/
 ---
 
@@ -12,7 +12,7 @@ Recently I had to perform a batch processing task where a thousands of images we
 
 We'll use [`ThreadPoolExecutor`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor) to execute tasks in a configurable number of worker threads. One option would be to submit tasks to the pool with `executor.submit()`. This method returns a [`concurrent.futures.Future`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future) object, to which one can add callbacks with [`add_done_callback()`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future.add_done_callback). However, callbacks are evil and it's best to avoid them if possible.
 
-With `asyncio`, we can instead use _awaitable_ [`asyncio.future`](https://docs.python.org/3/library/asyncio-future.html#asyncio.Future) objects and avoid callbacks.
+With [`asyncio`](https://docs.python.org/3/library/asyncio.html), we can instead use _awaitable_ [`asyncio.future`](https://docs.python.org/3/library/asyncio-future.html#asyncio.Future) objects and avoid callbacks.
 
 Our toy task is defined as follows:
 
@@ -29,7 +29,6 @@ The task will sleep one second between printing informative messages to the stan
 The entrypoint to our program looks as follows:
 
 ```python
-# main.py
 import asyncio
 
 def execute_hello(ind):
@@ -60,9 +59,6 @@ Using `ThreadPoolExecutor` as context manager ensures that the pool is shutdown 
 Now that we have the pool, we can submit tasks to it. Instead of using `pool.submit`, we'll use [`loop.run_in_executor()`](https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor) from `asyncio`:
 
 ```python
-def execute_hello(ind):
-    ...
-
 async def main(tasks=20):
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
         loop = asyncio.get_running_loop()
