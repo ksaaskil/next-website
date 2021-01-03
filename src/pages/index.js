@@ -159,7 +159,7 @@ function getNewRandomInt(max, oldInt) {
   return candidate === oldInt ? getNewRandomInt(max) : candidate
 }
 
-const ILove = () => {
+function cyclingLoveAndOpacity() {
   const [ind, setInd] = React.useState(0)
   const [t, setT] = React.useState((0.0 * INTERVAL_MS) / 4.0)
   const [opacity, setOpacity] = React.useState(0)
@@ -179,6 +179,31 @@ const ILove = () => {
     }, INTERVAL_MS / OPACITY_ANIMATION_STEPS)
     return () => clearTimeout(tTimeout)
   }, [t, ind])
+  return [loves[ind], opacity]
+}
+
+const ILove = () => {
+  /*   const [ind, setInd] = React.useState(0)
+  const [t, setT] = React.useState((0.0 * INTERVAL_MS) / 4.0)
+  const [opacity, setOpacity] = React.useState(0)
+ */
+  const [love, opacity] = cyclingLoveAndOpacity()
+
+  /* React.useEffect(() => {
+    const tTimeout = setTimeout(() => {
+      const newT = t + INTERVAL_MS / OPACITY_ANIMATION_STEPS
+      const newOpacity =
+        -0.5 * (Math.cos((newT * 2 * Math.PI) / INTERVAL_MS) - 1)
+      setT(newT)
+      setOpacity(newOpacity)
+      if (newT % INTERVAL_MS == 0) {
+        // const newInd = (ind + 1) % loves.length
+        const newInd = getNewRandomInt(loves.length, ind)
+        setInd(newInd)
+      }
+    }, INTERVAL_MS / OPACITY_ANIMATION_STEPS)
+    return () => clearTimeout(tTimeout)
+  }, [t, ind]) */
 
   return (
     <Box>
@@ -186,7 +211,7 @@ const ILove = () => {
         <Text as="span" textTransform="uppercase" letterSpacing={2}>
           I <Icon color="red.500" mx={2} as={FaHeart} />{" "}
           <Text as="span" opacity={opacity}>
-            {loves[ind].name}
+            {love.name}
           </Text>
         </Text>
       </Text>
