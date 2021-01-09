@@ -18,13 +18,17 @@ If we were reading from a shared queue such as [SQS](https://aws.amazon.com/sqs/
 
 > Note: Shared subscription [is part of](https://stackoverflow.com/questions/35014975/using-mqtt-with-multiple-subscribers) the MQTT v5 spec. Similar effect could also be achieved by application-level code for checking if the instance should process the event.
 
-Let's start by defining our event source as [`AsyncIterator`](https://docs.python.org/3/library/typing.html#typing.AsyncIterator) (see [`AsyncGenerator`](https://docs.python.org/3/library/typing.html#typing.AsyncGenerator) for examples):
+Let's see what we can do to speed up the processing. We start by defining our event source as [asynchronous iterator](https://docs.python.org/3/library/typing.html#typing.AsyncIterator) (see the documentation for [`AsyncGenerator`](https://docs.python.org/3/library/typing.html#typing.AsyncGenerator) for examples):
 
 ```python
 import asyncio
 from dataclasses import dataclass
 import time
 import typing
+
+@dataclass(frozen=True)
+class SourceEvent:
+    index: int
 
 async def event_source(delay=1, finish_after=10) -> typing.AsyncIterator[SourceEvent]:
     """Asynchronous generator of events."""
@@ -36,29 +40,21 @@ async def event_source(delay=1, finish_after=10) -> typing.AsyncIterator[SourceE
         yield event
 ```
 
-The event source yields a message of type
+The event source yields a message of type `SourceEvent` once a second. The source exits after the given number of messages, ten by default. We're using [`asyncio.sleep`](https://docs.python.org/3/library/asyncio-task.html#asyncio.sleep) (see code [here](https://github.com/python/cpython/blob/master/Lib/asyncio/tasks.py#L597)) to avoid blocking the event loop while "waiting" for the next message. This means we can consume the source in the main thread without blocking other asynchronous tasks in the thread.
+
+Our toy example of "cpu-intensive" processing is the function `process_event`:
 
 ```python
-@dataclass(frozen=True)
-class SourceEvent:
-    index: int
-```
-
-once a second. The source returns after the given number of messages, by default after 10 messages. Note that we're using [`asyncio.sleep`](https://docs.python.org/3/library/asyncio-task.html#asyncio.sleep) (see code [here](https://github.com/python/cpython/blob/master/Lib/asyncio/tasks.py#L597)) to avoid blocking the event loop while "waiting" for the next message.
-
-Here's our example of "cpu-intensive" processing:
-
-```python
-def process(event: SourceEvent):
+def process_event(event: SourceEvent):
     """Example of CPU-bound operation blocking the event loop."""
     time.sleep(5)
     result = event.index * event.index
     return result
 ```
 
-The function sleeps for five seconds with [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) and returns the square of `event.index`. The `time.sleep` call suspends the calling thread so it would be a bad idea to call this function from the main thread as all processing would stop.
+This function sleeps for five seconds with [`time.sleep`](https://docs.python.org/3/library/time.html#time.sleep) after which it returns the square of `event.index`. The `time.sleep` mimics heavy CPU-intensive calculation, suspending the calling thread. It would be a bad idea to call this function from the main thread as all other processing would be stopped.
 
-The entrypoint to our program is the coroutine `main`:
+The entrypoint to our program is the [coroutine](https://docs.python.org/3/library/asyncio-task.html#coroutines) `main`:
 
 ```python
 WORKER_PROCESSES = 5
@@ -70,15 +66,15 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
 ```
 
-In the `main()` coroutine, we first get the running event loop so that we can execute tasks in the event loop. We also build the asynchronous stream with default arguments.
+In the `main()` coroutine, we first get the running event loop so that we can execute tasks such as consuming the event stream in the loop. We also build the asynchronous stream with default arguments.
 
-We'll use a process pool executor with five worker processes (`WORKER_PROCESSES = 5`) to process the events. Each worker process reads event from a [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html) queue created with a [manager](https://docs.python.org/3/library/multiprocessing.html#multiprocessing-managers). Here's how it works:
+We'll use a [`ProcessPoolExecutor`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor) with five worker processes (`WORKER_PROCESSES = 5`) to process the events. Each worker process reads events from a [`multiprocessing`](https://docs.python.org/3/library/multiprocessing.html) queue created with a [multiprocessing.Manager](https://docs.python.org/3/library/multiprocessing.html#multiprocessing-managers). Here's how it works:
 
 ```python
 import concurrent.futures
+import multiprocessing as mp
 
 async def main():
     loop = asyncio.get_running_loop()
@@ -91,9 +87,9 @@ async def main():
         ...
 ```
 
-The manager takes care of passing messages between processes.
+The manager takes care of keeping the queue in sync between processes.
 
-The next step is to read the event source and push messages to the queue when they're received. For that, we'll define a helper coroutine `source_to_queue`:
+The next step is to read events from the source and push messages to the queue as they're received. For that, we'll define a helper coroutine `source_to_queue`:
 
 ```python
 async def source_to_queue(source, queue):
@@ -102,7 +98,7 @@ async def source_to_queue(source, queue):
         print(f"{threading.current_thread().name}: Submitted to queue", event)
 ```
 
-When started, the coroutine iterates over the asynchronous stream `source` and puts events to the queue when new events are received. Because reading the event source and pushing the events to queue is a non-blocking operation, we can use [`loop.create_task`]() to kick off `source_to_queue` in the main thread's event loop: 
+When started, the coroutine iterates over the asynchronous stream `source` and puts events to the queue when new events are received. Because reading the event source and pushing the events to queue is a non-blocking operation, we can use [`loop.create_task`](https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.create_task) to kick off `source_to_queue` in the main thread's event loop: 
 
 ```python
 async def main():
@@ -116,17 +112,17 @@ async def main():
         ...
 ```
 
-The `queue_push_task` is an awaitable that runs in the main event loop. Now that messages are going to the queue as they're received, we still need to start the worker processes for consuming events from the queue:
+The `queue_push_task` is an awaitable [`Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) that runs in the main event loop. Now that messages are going to the queue as they're received, we still need to start the worker processes for consuming events from the queue:
 
 ```python
-def worker(queue, process_event):
+def worker(queue, process_event_):
     while True:
         event = queue.get()
         if event is None:
             print(f"PID {mp.current_process().pid}: Got None, exiting queue")
             return
         print(f"PID {mp.current_process().pid}: Starting processing", event)
-        process_event(event)
+        process_event_(event)
         print(f"PID {mp.current_process().pid}: Finished processing", event)
 
 async def main():
@@ -136,17 +132,17 @@ async def main():
         ...
         queue_push_task = loop.create_task(source_to_queue(source, queue=q))
         worker_fs = [
-            loop.run_in_executor(pool, worker, q, process)
+            loop.run_in_executor(pool, worker, q, process_event)
             for _ in range(WORKER_PROCESSES)
         ]
         await queue_push_task
 ```
 
-Every process runs the `worker` function that takes events from the queue and processes them with the given function. Value `None` is used as the sentinel value to tell the processes to stop.
+Every process runs the `worker` function that takes events from the queue and processes them with the given function. Value `None` is used as the sentinel value to tell the processes to stop reading from the queue.
 
-The workers are created with [`loop.run_in_executor`](https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor) that returns an [`asyncio.future`](https://docs.python.org/3/library/asyncio-future.html#asyncio.Future) object for each workers. These objects can be awaited, unlike the [`concurrent.futures.Future`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future).
+The workers are created with [`loop.run_in_executor`](https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.run_in_executor) that returns an [`asyncio.future`](https://docs.python.org/3/library/asyncio-future.html#asyncio.Future) object for each worker. These futures can be awaited, unlike the [`concurrent.futures.Future`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Future).
 
-After the workers are started, we wait for the `queue_push_task` to finish, which in turn finishes after the `event_source` iterator finishes (after ten messages).
+After the workers are started, we wait for the `queue_push_task` to finish, which happens after the `event_source` iterator finishes (after ten messages).
 
 The final touch is to stop down the workers once the event source is exhausted by sending `None` to the queue as many times as there are workers:
 
@@ -209,3 +205,5 @@ PID 6777: Got None, exiting queue
 ```
 
 See how the first event is only processed after the fifth event is received. After that, the workers do not fall behind more but stay five events "late".
+
+That's it for the article, I'm very happy to hear questions and comments. Thank you for reading!
