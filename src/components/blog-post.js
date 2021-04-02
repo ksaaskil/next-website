@@ -4,7 +4,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import {
   Box,
-  Callout,
+  Alert,
   Code,
   Heading,
   Text,
@@ -13,7 +13,7 @@ import {
   Link as ChakraUILink,
   Divider,
   ListItem,
-} from "@chakra-ui/core"
+} from "@chakra-ui/react"
 import SEO from "./seo"
 import SingleSection from "./single-section"
 import CodeBlock from "./code-block"
@@ -42,9 +42,11 @@ const components = {
     ></Heading>
   ),
   h3: props => (
-    <Heading as="h3" fontSize="2xl" fontWeight="800" mt={5} {...props} />
+    <Heading as="h3" fontSize="2xl" fontWeight="800" mt={6} {...props} />
   ),
-  h4: props => <Heading as="h4" fontSize="lg" fontWeight="700" {...props} />,
+  h4: props => (
+    <Heading as="h4" mt={5} fontSize="lg" fontWeight="700" {...props} />
+  ),
   h5: props => <Heading as="h5" fontSize="md" fontWeight="600" {...props} />,
   h6: props => <Heading as="h6" fontSize="sm" fontWeight="500" {...props} />,
   p: props => (
@@ -53,18 +55,18 @@ const components = {
     </Text>
   ),
   blockquote: props => (
-    <Callout
+    <Alert
       my={6}
       rounded="sm"
+      status="info"
       variant="left-accent"
-      color="red.600"
+      color="blue.900"
       fontWeight="600"
-      status="error"
       css={{ "> *:first-of-type": { marginTop: 0 } }}
       {...props}
     >
       {props.children}
-    </Callout>
+    </Alert>
   ),
   inlineCode: props => (
     <Code bg="rgb(40, 42, 54)" color="#8BE9FD" fontSize="inherit" {...props} />
@@ -75,12 +77,12 @@ const components = {
   pre: props => <Box my="2em" fontSize="inherit" rounded="sm" {...props} />,
   code: CodeBlock,
   ul: props => (
-    <List styleType="disc" my={4} spacing={2} {...props}>
+    <List styleType="disc" ml={8} my={4} spacing={2} {...props}>
       {props.children}
     </List>
   ),
   ol: props => (
-    <List as="ol" styleType="decimal" my={4} spacing={2} {...props}>
+    <List as="ol" styleType="decimal" my={4} ml={8} spacing={2} {...props}>
       {props.children}
     </List>
   ),

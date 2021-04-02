@@ -6,8 +6,10 @@ import GitHubIcon from "../assets/github.logo.svg"
 import ScholarIcon from "../assets/scholar.logo.svg"
 import DevToIcon from "../assets/devto.logo.svg"
 import { Link as GatsbyLink } from "gatsby"
-import { Link, Switch } from "@chakra-ui/core"
-import { Stack, Icon, useColorMode } from "@chakra-ui/core"
+import { Link } from "@chakra-ui/react"
+import { Box, Stack } from "@chakra-ui/react"
+import { FaExternalLinkAlt } from "react-icons/fa"
+import { Icon } from "@chakra-ui/react"
 
 /* const Nav = () => (
   <nav className="nav">
@@ -38,6 +40,26 @@ import { Stack, Icon, useColorMode } from "@chakra-ui/core"
   </nav>
 ) */
 
+const spacing = 8
+
+const NavLink = props => {
+  return (
+    <Box>
+      <Link
+        className="nav-link"
+        as={props.to ? GatsbyLink : Link}
+        fontWeight="600"
+        _hover={{ textDecoration: "none" }}
+        activeStyle={{
+          textShadow: "0 0 0 black",
+          fontWeight: 400,
+        }}
+        {...props}
+      />
+    </Box>
+  )
+}
+
 export const Navigation = () => {
   // const { colorMode, toggleColorMode } = useColorMode()
 
@@ -47,24 +69,18 @@ export const Navigation = () => {
       isInline
       justify="space-around"
       py={4}
+      pl={12}
       mb={6}
       flexWrap="wrap"
     >
-      <Stack isInline>
-        {/* <Icon name={colorMode === "dark" ? "moon" : "sun"} />
-        <Switch
-          isChecked={colorMode === "dark"}
-          onChange={() => toggleColorMode()}
-        /> */}
-
-        <Link as={GatsbyLink} to="/">
-          Home
-        </Link>
-        {/* <Link as={GatsbyLink} to="/blog/">
-          Blog
-        </Link> */}
+      <Stack isInline spacing={spacing}>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/bookshelf">Bookshelf</NavLink>
+        <NavLink href="https://ksaaskil.github.io" isExternal>
+          CV <Icon ml={1} as={FaExternalLinkAlt} />
+        </NavLink>
       </Stack>
-      <Stack isInline overflowWrap="normal">
+      {/* <Stack isInline spacing={spacing} overflowWrap="normal">
         <Link href="https://www.instagram.com/saaskimmo/" isExternal>
           Instagram
         </Link>
@@ -83,7 +99,7 @@ export const Navigation = () => {
         <Link href="https://dev.to/ksaaskil" isExternal>
           dev.to
         </Link>
-      </Stack>
+      </Stack> */}
     </Stack>
   )
 }

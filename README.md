@@ -8,30 +8,24 @@
 ### Run development server
 
 ```bash
-yarn
-yarn develop
+$ yarn
+$ yarn develop
 ```
 
 ### Export static files
 
 ```bash
-yarn build
-```
-
-### Run Storybook
-
-```bash
-yarn storybook
-```
-
-### Build static Storybook
-
-```bash
-yarn build-storybook
+$ yarn build
 ```
 
 ### Serve the build
 
 ```bash
-yarn serve
+$ yarn serve
+```
+
+### Fix formatting
+
+```bash
+$ yarn eslint --fix
 ```
